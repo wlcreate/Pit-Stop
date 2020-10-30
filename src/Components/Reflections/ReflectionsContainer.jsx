@@ -18,7 +18,7 @@ class ReflectionsContainer extends React.Component{
     render(){
 
         let {name, address, area, country, revisit, category} = this.props.place
-        
+        console.log(revisit)
         let arrayOfComponents = this.props.reflections.map(reflectionObj => {
             return <ReflectionCard key={reflectionObj.id} reflection={reflectionObj}/>
         })
@@ -29,9 +29,10 @@ class ReflectionsContainer extends React.Component{
                 <h3>{category.name}</h3>
                 <h3>{area}, {country}</h3>
                 <p>{address}</p>
+                {/* NEED TO FIGURE OUT THIS LOGIC */}
                 <p>Revisit?
                 {
-                    {revisit} === true
+                    {revisit}
                     ?
                     "Yes"
                     :

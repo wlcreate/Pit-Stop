@@ -54,10 +54,10 @@ let userReducer = (state = initialStateOfUserReducer, action) => {
         trips: action.payload.user.trips
       }
     case "LOG_OUT_USER":
-      console.log("IN userReducer LOG_OUT_USER")
+      // console.log("IN userReducer LOG_OUT_USER")
       return initialStateOfUserReducer
     case "SET_PLACES":
-      console.log("THIS IS FROM TRIP CARD:", action.payload)
+      // console.log("THIS IS FROM TRIP CARD:", action.payload)
       return {
         ...state,
         chosen_trip: action.payload,
