@@ -91,6 +91,19 @@ let userReducer = (state = initialStateOfUserReducer, action) => {
         ...state,
         trips: copyOfAllTrips
       }
+    case "UPDATE_TRIP":
+      let copyOfStateTrips = [...state.trips].map(tripObj => {
+        if(tripObj.id === action.payload.id){
+          return action.payload
+        } else {
+          return tripObj
+        }
+      })
+      return {
+        ...state,
+        trips: copyOfStateTrips,
+        chosen_trip: action.payload
+      }
     default:
       return state
   }

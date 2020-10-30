@@ -56,7 +56,7 @@ class SignUpForm extends React.Component{
         return(
             <div>
                 <h1>Sign Up</h1>
-                <Form onSubmit={this.handleSubmit}>
+                <Form>
                     <Form.Field id="first_name"
                         control={Input}
                         label="First name"

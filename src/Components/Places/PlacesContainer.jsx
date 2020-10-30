@@ -5,8 +5,13 @@ import { CardGroup } from 'semantic-ui-react'
 import { Button } from 'semantic-ui-react'
 import PlaceCard from './PlaceCard'
 import AddPlaceModal from './AddPlaceModal'
+import UpdateTripForm from '../Trips/UpdateTripForm'
 
 class PlacesContainer extends React.Component{
+
+    state = {
+        showForm: false
+    }
 
     componentDidMount(){
         fetch("http://localhost:3000/categories")
@@ -14,6 +19,12 @@ class PlacesContainer extends React.Component{
         .then(categoriesArray => {
             // console.log(categoriesArray)
             this.props.setCategories(categoriesArray)
+        })
+    }
+
+    handleUpdate = () => {
+        this.setState({
+            showForm: !this.state.showForm
         })
     }
 
@@ -30,7 +41,14 @@ class PlacesContainer extends React.Component{
                 <h1>{title}</h1>
                 <h3>{start_date} - {end_date}</h3>
                 <p>{description}</p>
-                <Button>Edit Trip</Button>
+                <Button onClick={this.handleUpdate}>Edit Trip</Button>
+                {
+                    this.state.showForm
+                    ?
+                    <UpdateTripForm handleUpdate={this.handleUpdate}/>
+                    :
+                    null
+                }
                 <br></br>
                 <br></br>
                 {/* <Button onClick={this.handleAddPlace}>Add a Place</Button> */}
