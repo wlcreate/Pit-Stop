@@ -10,13 +10,30 @@ class TripCard extends React.Component{
         this.props.history.push(`/trips/${this.props.trip.id}/places`)
     }
 
+    handleDelete = () => {
+        console.log("I've been clicked!")
+        this.props.history.push("/trips")
+        fetch(`http://localhost:3000/trips/${this.props.trip.id}`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": this.props.token
+            }
+        })
+        .then(res => res.json())
+        .then(deletedObj => {
+            console.log(deletedObj)
+            this.props.deleteTrip(deletedObj)
+        })
+    }
+
     render(){
         
         let {title, start_date, end_date, description} = this.props.trip
 
         return(
-            <Card onClick={this.handleClick}>
-                <Card.Content>
+            <Card>
+                <Card.Content onClick={this.handleClick}>
                     <Card.Header>{title}</Card.Header>
                     <Card.Meta>{start_date} - {end_date}</Card.Meta>
                     <Card.Description>
@@ -24,14 +41,21 @@ class TripCard extends React.Component{
                     </Card.Description>
                 </Card.Content>
                 <Card.Content>
-                    <div>
-                        <Button floated='right' basic color='red'>
+                    <div onClick={this.handleDelete}>
+                        <button className="ui right floated red button" >
                             Delete
-                        </Button>
+                        </button>
                     </div>
                 </Card.Content>
             </Card>
         )
+    }
+}
+
+// getting information
+let mapStateToProps = (globalState) => {
+    return {
+        token: globalState.user.token
     }
 }
 
@@ -44,10 +68,20 @@ let setPlacesInfo = (tripInfo) => {
     }
 }
 
+// Action creator -> Function definition down
+    // Invoke that action creator within the component -> Function invocation up
+let deleteTrip = (deletedTrip) => {
+    return {
+        type: "DELETE_TRIP",
+        payload: deletedTrip
+    }
+}
+
 // mapDispatchToProps sends information
     // is a POJO that will be merged into the props of the component
 let mapDispatchToProps = {
-    setPlacesInfo: setPlacesInfo
+    setPlacesInfo: setPlacesInfo,
+    deleteTrip: deleteTrip
 }
 
-export default connect(null, mapDispatchToProps)(withRouter(TripCard))
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(TripCard))

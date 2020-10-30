@@ -83,6 +83,14 @@ let userReducer = (state = initialStateOfUserReducer, action) => {
         chosen_trip: action.payload.chosen_trip,
         places: copyOfPlaces
       }
+    case "DELETE_TRIP":
+      let copyOfAllTrips = [...state.trips].filter(tripObj => {
+        return tripObj.id !== action.payload.id
+      })
+      return {
+        ...state,
+        trips: copyOfAllTrips
+      }
     default:
       return state
   }
