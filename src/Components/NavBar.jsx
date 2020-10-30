@@ -7,8 +7,8 @@ class NavBar extends React.Component {
     handleClick = (evt) => {
         // debugger
         localStorage.clear()
-        console.log(handleLogOut())
-        handleLogOut()
+        // console.log(handleLogOut())
+        this.props.handleLogOut()
     }
     render(){
         return (

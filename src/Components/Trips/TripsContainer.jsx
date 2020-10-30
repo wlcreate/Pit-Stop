@@ -31,8 +31,8 @@ class TripsContainer extends React.Component{
     // returns POJO to be merged into props of the component
 let mapStateToProps = (globalState) => {
     return {
-        full_name: globalState.full_name,
-        trips: globalState.trips
+        full_name: globalState.user.full_name,
+        trips: globalState.user.trips
     }
 }
 

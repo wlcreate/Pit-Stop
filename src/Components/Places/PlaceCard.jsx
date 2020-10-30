@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
-import { Card } from 'semantic-ui-react'
+import { Card, Button } from 'semantic-ui-react'
 
 class PlaceCard extends React.Component{
 
@@ -20,6 +20,13 @@ class PlaceCard extends React.Component{
                     <Card.Description>
                         {area}, {country}
                     </Card.Description>
+                </Card.Content>
+                <Card.Content>
+                    <div>
+                        <Button floated='right' basic color='red'>
+                            Delete
+                        </Button>
+                    </div>
                 </Card.Content>
             </Card>
         )

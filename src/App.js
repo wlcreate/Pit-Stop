@@ -35,6 +35,14 @@ class App extends React.Component{
     }
   }
 
+  renderPlaces = () => {
+    if(this.props.token){
+      return <PlacesContainer />
+    } else {
+      return <Redirect to="/trips"/>
+    }
+  }
+
   render(){
     return (
       <div className="App">
@@ -47,13 +55,19 @@ class App extends React.Component{
           <Route path="/login" component={LogInForm}/>
           <Route path="/signup" component={SignUpForm}/>
           <Route path="/trips" exact component={TripsContainer}/>
-          <Route path="/trips/:id/places" exact component={PlacesContainer}/>
+          <Route path="/trips/:id/places" exact render={this.renderPlaces}/>
           <Route path="/trips/:id/places/:id/reflections" exact component={ReflectionsContainer}/>
           {/* <Route path="/account" component={TripsContainer}/> */}
           <Route render={ () => <p>Page not Found</p> } />
         </Switch>
       </div>
     ) 
+  }
+}
+
+let mapStateToProps = (globalState) => {
+  return {
+      token: globalState.user.token
   }
 }
 
@@ -69,4 +83,4 @@ let mapDispatchToProps = {
   setUserInfo: setUserInfo
 }
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

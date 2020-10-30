@@ -19,7 +19,7 @@ function AddTripModal(props) {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
-                "Authorization": localStorage.token
+                "Authorization": props.token
             },
             body: JSON.stringify({
                 title,
@@ -89,6 +89,13 @@ function AddTripModal(props) {
     )
 }
 
+// getting information
+let mapStateToProps = (globalState) => {
+    return {
+        token: globalState.user.token
+    }
+}
+
 // Action Creator
 let createNewTrip = (createdTrip) => {
     return {
@@ -102,4 +109,4 @@ let mapDispatchToProps = {
     createNewTrip: createNewTrip
 }
 
-export default connect(null, mapDispatchToProps)(AddTripModal)
+export default connect(mapStateToProps, mapDispatchToProps)(AddTripModal)

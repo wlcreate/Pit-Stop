@@ -8,17 +8,36 @@ import 'semantic-ui-css/semantic.min.css' // adds semantic ui
 import {BrowserRouter} from 'react-router-dom'
 
 // REDUX STUFF
-import {createStore} from 'redux'
+import {createStore, combineReducers} from 'redux'
 import {Provider} from 'react-redux'
 
 // Reducer (aka function definition)
   // Return value of this becomes the global state
 
+// ------ Categories Reducer ------
+let initialStateOfCategoryReducer = {
+  categories: []
+}
+
+let categoryReducer = (state = initialStateOfCategoryReducer, action) => {
+  switch(action.type){
+    case "SET_CATEGORIES":
+      return {
+        ...state,
+        categories: action.payload
+      }
+    default:
+      return state
+  }
+}
+
+// ------ User Reducer ------
 let initialStateOfUserReducer = {
   username: "",
   full_name: "",
   token: "",
   trips: [],
+  chosen_trip: {},
   places: [],
   reflections: []
 }
@@ -38,10 +57,11 @@ let userReducer = (state = initialStateOfUserReducer, action) => {
       console.log("IN userReducer LOG_OUT_USER")
       return initialStateOfUserReducer
     case "SET_PLACES":
-      // console.log("THIS IS FROM TRIP CARD:", action.payload)
+      console.log("THIS IS FROM TRIP CARD:", action.payload)
       return {
         ...state,
-        places: action.payload
+        chosen_trip: action.payload,
+        places: action.payload.places
       } 
     case "SET_REFLECTIONS":
       // console.log("THIS IS FROM PLACE CARD:", action.payload)
@@ -56,9 +76,11 @@ let userReducer = (state = initialStateOfUserReducer, action) => {
         trips: copyOfTrips
       }
     case "ADD_PLACE":
-      let copyOfPlaces = [...state.places, action.payload]
+      let copyOfPlaces = [...state.places, action.payload.place]
       return {
         ...state,
+        trips: action.payload.user.trips,
+        chosen_trip: action.payload.chosen_trip,
         places: copyOfPlaces
       }
     default:
@@ -66,8 +88,21 @@ let userReducer = (state = initialStateOfUserReducer, action) => {
   }
 }
 
+// combineReducers takes in a POJO
+  // the keys of the POJO become the highest level keys of global state
+  // the values of the POJO are the reducers
+
+// Any time that an action gets dispatched, all the reducers handle it
+
+let thePojo = {
+  categories: categoryReducer,
+  user: userReducer
+}
+
+let rootReducer = combineReducers(thePojo)
+
 let storeObj = createStore(
-  userReducer,
+  rootReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 

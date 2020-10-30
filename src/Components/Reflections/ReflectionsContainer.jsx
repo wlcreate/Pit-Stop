@@ -18,7 +18,7 @@ class ReflectionsContainer extends React.Component{
     render(){
 
         let {name, address, area, country, revisit, category} = this.props.place
-
+        
         let arrayOfComponents = this.props.reflections.map(reflectionObj => {
             return <ReflectionCard key={reflectionObj.id} reflection={reflectionObj}/>
         })
@@ -31,7 +31,7 @@ class ReflectionsContainer extends React.Component{
                 <p>{address}</p>
                 <p>Revisit?
                 {
-                    {revisit}
+                    {revisit} === true
                     ?
                     "Yes"
                     :
@@ -54,10 +54,10 @@ class ReflectionsContainer extends React.Component{
     // is a callback, 1st arg is globalStateObj, 2nd arg is ownProps
     // returns POJO to be merged into props of the component
 let mapStateToProps = (globalState) => {
-    let place = globalState.places.find(place => place.reflections === globalState.reflections)
-    let trip = globalState.trips.find(trip => trip.places.includes(place))
+    let place = globalState.user.places.find(place => place.reflections === globalState.user.reflections)
+    let trip = globalState.user.trips.find(trip => trip.places.includes(place))
     return {
-        reflections: globalState.reflections,
+        reflections: globalState.user.reflections,
         place: place,
         trip: trip
     }

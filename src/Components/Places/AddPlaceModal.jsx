@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {connect} from 'react-redux'
+import {CountryDropdown} from 'react-country-region-selector'
 import { Button, Header, Icon, Modal, Form, FormField, FormGroup } from 'semantic-ui-react'
 
 function AddPlaceModal(props) {
@@ -10,29 +11,49 @@ function AddPlaceModal(props) {
     let [name, setName] = useState("")
     let [address, setAddress] = useState("")
     let [area, setArea] = useState("")
-    let [country, setCountry] = useState("")
-    let [revisit, setRevisit] = useState("")
+    let [country, setCountry] = useState("") // ! need to decide
+    let [revisit, setRevisit] = useState(true)
+    let [selectedCountry, setSelectedCountry] = useState("") // ! need to decide
+    let [selectedCategory, setSelectedCategory] = useState(1)
+
+    // options for categories dropdown
+    let categoriesList = () => {
+        if (props.categories){
+            return props.categories.categories.map(category => {
+                // debugger
+                return <option key={category.id} value={category.id}>{category.name}</option>
+            })
+        }
+    }
 
     let handleClick = (evt) => {
+        // debugger
         evt.preventDefault()
         setOpen(false)
         fetch("http://localhost:3000/places", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
-                "Authorization": localStorage.token
+                "Authorization": props.token
             },
             body: JSON.stringify({
-                
+                name,
+                address,
+                area,
+                revisit,
+                country: selectedCountry,
+                category_id: selectedCategory,
+                trip_id: props.trip.id
             })
         })
         .then(res => res.json())
-        .then(newPlace => {
-            console.log(newPlace)
-            props.createNewPlace(newPlace)
+        .then(response => {
+            console.log(response)
+            // debugger
+            props.createNewPlace(response)
         })
     }
-
+    console.log(revisit)
     return (
         <Modal
         closeIcon
@@ -41,7 +62,7 @@ function AddPlaceModal(props) {
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         >
-        <Header icon='map' content='Add a Trip' />
+        <Header icon='map' content='Add a Place' />
         <Modal.Content>
             <Form>
                 <FormField>
@@ -51,6 +72,12 @@ function AddPlaceModal(props) {
                         value={name}
                         onChange={e => {setName(e.target.value)}}
                     />
+                </FormField>
+                <FormField>
+                    <label htmlFor="category">Category</label>
+                    <select value={selectedCategory} onChange={e => {setSelectedCategory(e.target.value)}}>
+                        {categoriesList()}
+                    </select>
                 </FormField>
                 <FormField>
                     <label htmlFor="address">Address</label>
@@ -68,28 +95,36 @@ function AddPlaceModal(props) {
                         onChange={e => {setArea(e.target.value)}}
                     />
                 </FormField>
-                <FormField>
+                {/* <FormField>
                     <label htmlFor="country">Country</label>
                     <input type="text" placeholder="Country"
                         name="country"
                         value={country}
                         onChange={e => {setCountry(e.target.value)}}
                     />
+                </FormField> */}
+                <FormField>
+                    <label htmlFor="country">Country</label>
+                    <CountryDropdown
+                        valueType="full"
+                        value={selectedCountry}
+                        onChange={value => {setSelectedCountry(value)}} 
+                        // onChange={value => console.log(value)}
+                    />
                 </FormField>
-                {/* ! HAVING ISSUES WITH RADIO BUTTONS!!!! */}
                 <FormGroup>
                     <label htmlFor="revisit">Revisit?</label>
                     <Form.Radio
                         label='Yes'
-                        value="true"
-                        checked={revisit === 'true'}
-                        onChange={(e) => {setRevisit(e.target.value)}}
+                        value={true}
+                        checked={revisit}
+                        onChange={(e, checkbox) => {setRevisit(checkbox.value)}}
                     />
                     <Form.Radio
                         label='No'
-                        value="false"
-                        checked={revisit === 'false'}
-                        onChange={(e) => {setRevisit(e.target.value)}}
+                        value={false}
+                        checked={!revisit}
+                        onChange={(e, checkbox) => {setRevisit(checkbox.value)}}
                     />
                 </FormGroup>
             </Form>
@@ -103,11 +138,20 @@ function AddPlaceModal(props) {
     )
 }
 
+// getting information
+let mapStateToProps = (globalState) => {
+    return {
+        categories: globalState.categories,
+        token: globalState.user.token,
+        trip: globalState.user.chosen_trip
+    }
+}
+
 // Action Creator
-let createNewPlace = (createdPlace) => {
+let createNewPlace = (createdRes) => {
     return {
         type: "ADD_PLACE",
-        payload: createdPlace
+        payload: createdRes
     }
 }
 
@@ -116,4 +160,4 @@ let mapDispatchToProps = {
     createNewPlace: createNewPlace
 }
 
-export default connect(null, mapDispatchToProps)(AddPlaceModal)
+export default connect(mapStateToProps, mapDispatchToProps)(AddPlaceModal)

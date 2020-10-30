@@ -8,6 +8,15 @@ import AddPlaceModal from './AddPlaceModal'
 
 class PlacesContainer extends React.Component{
 
+    componentDidMount(){
+        fetch("http://localhost:3000/categories")
+        .then(response => response.json())
+        .then(categoriesArray => {
+            // console.log(categoriesArray)
+            this.props.setCategories(categoriesArray)
+        })
+    }
+
     render(){
 
         let {title, start_date, end_date, description} = this.props.trip
@@ -38,11 +47,29 @@ class PlacesContainer extends React.Component{
     // is a callback, 1st arg is globalStateObj, 2nd arg is ownProps
     // returns POJO to be merged into props of the component
 let mapStateToProps = (globalState) => {
-    let trip = globalState.trips.find(trip => trip.places === globalState.places)
+    // debugger
+    // let trip = globalState.user.trips.filter(trip => {
+    //     debugger
+    //     return trip.places === globalState.user.places
+    // }).pop()
+    // let trip = globalState.user.trips.find(trip => trip.places === globalState.user.places)
     return {
-        places: globalState.places,
-        trip: trip
+        places: globalState.user.places,
+        trip: globalState.user.chosen_trip
     }
 }
 
-export default connect(mapStateToProps)(withRouter(PlacesContainer))
+// Action Creator
+let setCategories = (allCategories) => {
+    return {
+        type: "SET_CATEGORIES",
+        payload: allCategories
+    }
+}
+
+// sending information
+let mapDispatchToProps = {
+    setCategories: setCategories
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(PlacesContainer))
