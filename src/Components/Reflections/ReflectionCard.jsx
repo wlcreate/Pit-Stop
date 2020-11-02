@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
-import { Card } from 'semantic-ui-react'
+import { Card, Button } from 'semantic-ui-react'
 
 class ReflectionCard extends React.Component{
 
@@ -11,15 +11,22 @@ class ReflectionCard extends React.Component{
     // }
 
     render(){
-        let {date_visited, rating, content} = this.props.reflection
+        let {nice_timestamp, rating, content} = this.props.reflection
         return(
             <Card>
                 <Card.Content>
-                    <Card.Header>{date_visited}</Card.Header>
+                    <Card.Header>{nice_timestamp}</Card.Header>
                     <Card.Meta>Rating: {rating}</Card.Meta>
                     <Card.Description>
                         {content}
                     </Card.Description>
+                </Card.Content>
+                <Card.Content>
+                    <div onClick={this.handleDelete}>
+                        <Button floated='right' className="ui right floated red button">
+                            Delete
+                        </Button>
+                    </div>
                 </Card.Content>
             </Card>
         )

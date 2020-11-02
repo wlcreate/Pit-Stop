@@ -129,6 +129,14 @@ let userReducer = (state = initialStateOfUserReducer, action) => {
         places: copyOfStatePlaces,
         chosen_place: action.payload.place
       }
+    case "ADD_REFLECTION":
+      let copyOfReflections = [...state.reflections, action.payload.reflection]
+      return {
+        ...state,
+        trips: action.payload.user.trips,
+        chosen_place: action.payload.chosen_place,
+        reflections: copyOfReflections
+      }
     default:
       return state
   }

@@ -12,7 +12,7 @@ class PlaceCard extends React.Component{
 
     handleDelete = (evt) => {
         debugger
-        fetch(`http://localhost:3000/trips/${this.props.trip.id}/places/${this.props.place.id}`, {
+        fetch(`http://localhost:3000/places/${this.props.place.id}`, {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',

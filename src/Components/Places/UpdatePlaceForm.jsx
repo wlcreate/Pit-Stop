@@ -53,7 +53,7 @@ class UpdatePlaceForm extends React.Component{
     handleClick = (evt) => {
         evt.preventDefault()
         let {name, category, address, area, country, revisit} = this.state
-        fetch(`http://localhost:3000/trips/${this.props.trip.id}/places/${this.props.place.id}`, {
+        fetch(`http://localhost:3000/places/${this.props.place.id}`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',

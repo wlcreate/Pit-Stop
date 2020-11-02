@@ -5,6 +5,7 @@ import { CardGroup } from 'semantic-ui-react'
 import { Button } from 'semantic-ui-react'
 import UpdatePlaceForm from '../Places/UpdatePlaceForm'
 import ReflectionCard from './ReflectionCard'
+import AddReflectionForm from './AddReflectionForm'
 
 class ReflectionsContainer extends React.Component{
 
@@ -20,7 +21,7 @@ class ReflectionsContainer extends React.Component{
 
     handlePlaceDelete = (evt) => {
         this.props.history.push("/trips")
-        fetch(`http://localhost:3000/trips/${this.props.trip.id}/places/${this.props.place.id}`, {
+        fetch(`http://localhost:3000/places/${this.props.place.id}`, {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
@@ -34,14 +35,10 @@ class ReflectionsContainer extends React.Component{
         })
     }
 
-    handleAddReflection = (evt) => {
-        
-    }
-
     render(){
 
         let {name, address, area, country, revisit, category} = this.props.place
-        console.log(revisit)
+
         let arrayOfComponents = this.props.reflections.map(reflectionObj => {
             return <ReflectionCard key={reflectionObj.id} reflection={reflectionObj}/>
         })
@@ -82,6 +79,7 @@ class ReflectionsContainer extends React.Component{
                 <CardGroup className="reflections-card-group">
                     {arrayOfComponents}
                 </CardGroup>
+                <AddReflectionForm />
             </div>
         )
     }
