@@ -29,7 +29,7 @@ class PlacesContainer extends React.Component{
     }
 
     handleDelete = () => {
-        console.log("I've been clicked!")
+        console.log("I've been clicked to delete the Trip!")
         this.props.history.push("/trips")
         fetch(`http://localhost:3000/trips/${this.props.trip.id}`, {
             method: "DELETE",

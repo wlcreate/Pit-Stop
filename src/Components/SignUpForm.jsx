@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
-import { Input, Form, Button, Message } from 'semantic-ui-react'
+import { Input, Form, Button } from 'semantic-ui-react'
 
 class SignUpForm extends React.Component{
 

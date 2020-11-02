@@ -38,7 +38,7 @@ class PlaceCard extends React.Component{
 let setReflectionsInfo = (placeInfo) => {
     return {
         type: "SET_REFLECTIONS",
-        payload: placeInfo.reflections
+        payload: placeInfo
     }
 }
 

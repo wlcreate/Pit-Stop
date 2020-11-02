@@ -3,12 +3,19 @@ import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import { CardGroup } from 'semantic-ui-react'
 import { Button } from 'semantic-ui-react'
+import UpdatePlaceForm from '../Places/UpdatePlaceForm'
 import ReflectionCard from './ReflectionCard'
 
 class ReflectionsContainer extends React.Component{
 
-    handleEditPlace = (evt) => {
+    state = {
+        showForm: false
+    }
 
+    handleEditPlace = (evt) => {
+        this.setState({
+            showForm: !this.state.showForm
+        })
     }
 
     handleAddReflection = (evt) => {
@@ -42,6 +49,13 @@ class ReflectionsContainer extends React.Component{
                     </p>
                     <Button onClick={this.handleEditPlace}>Edit Place</Button>
                 </div>
+                {
+                    this.state.showForm
+                    ?
+                    <UpdatePlaceForm handleEditPlace={this.handleEditPlace}/>
+                    :
+                    null
+                }
                 <h2 className="card-group-title">My Reflections</h2>
                 <Button color='teal' onClick={this.handleAddReflection}>Add a Reflection</Button>
                 <CardGroup className="reflections-card-group">
@@ -56,12 +70,14 @@ class ReflectionsContainer extends React.Component{
     // is a callback, 1st arg is globalStateObj, 2nd arg is ownProps
     // returns POJO to be merged into props of the component
 let mapStateToProps = (globalState) => {
-    let place = globalState.user.places.find(place => place.reflections === globalState.user.reflections)
-    let trip = globalState.user.trips.find(trip => trip.places.includes(place))
+    // let place = globalState.user.places.find(place => place.reflections === globalState.user.reflections)
+    // let trip = globalState.user.trips.find(trip => trip.places.includes(place))
+
     return {
         reflections: globalState.user.reflections,
-        place: place,
-        trip: trip
+        place: globalState.user.chosen_place,
+        trip: globalState.user.chosen_trip,
+        token: globalState.user.token
     }
 }
 

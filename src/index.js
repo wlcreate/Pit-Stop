@@ -39,6 +39,7 @@ let initialStateOfUserReducer = {
   trips: [],
   chosen_trip: {},
   places: [],
+  chosen_place: {},
   reflections: []
 }
 
@@ -67,7 +68,8 @@ let userReducer = (state = initialStateOfUserReducer, action) => {
       // console.log("THIS IS FROM PLACE CARD:", action.payload)
       return {
         ...state,
-        reflections: action.payload
+        chosen_place: action.payload,
+        reflections: action.payload.reflections
       }
     case "ADD_TRIP":
       let copyOfTrips = [...state.trips, action.payload]
@@ -103,6 +105,20 @@ let userReducer = (state = initialStateOfUserReducer, action) => {
         ...state,
         trips: copyOfStateTrips,
         chosen_trip: action.payload
+      }
+    case "UPDATE_PLACE":
+      let copyOfStatePlaces = [...state.places].map(placeObj => {
+        if(placeObj.id === action.payload.place.id){
+          return action.payload.place
+        } else {
+          return placeObj
+        }
+      })
+      return {
+        ...state,
+        trips: action.payload.user.trips,
+        places: copyOfStatePlaces,
+        chosen_place: action.payload.place
       }
     default:
       return state

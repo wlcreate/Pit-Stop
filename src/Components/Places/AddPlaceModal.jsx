@@ -11,7 +11,7 @@ function AddPlaceModal(props) {
     let [name, setName] = useState("")
     let [address, setAddress] = useState("")
     let [area, setArea] = useState("")
-    let [country, setCountry] = useState("") // ! need to decide
+    // let [country, setCountry] = useState("") // ! need to decide
     let [revisit, setRevisit] = useState(true)
     let [selectedCountry, setSelectedCountry] = useState("") // ! need to decide
     let [selectedCategory, setSelectedCategory] = useState(1)
