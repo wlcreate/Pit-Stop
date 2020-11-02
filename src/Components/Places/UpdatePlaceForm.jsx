@@ -102,6 +102,7 @@ class UpdatePlaceForm extends React.Component{
                             width={8}
                         />
                     <Form.Field>
+                        {/* ISSUE WITH HAVING THE PRE-SELECTED CATEGORY APPEAR -> THE VALUE IS SAME BUT NOT SHOWING ON FORM */}
                         <label htmlFor="category">Category</label>
                         <select value={category} onChange={e => {this.handleCategoryChange(e.target.value)}}>
                             {categoriesList()}

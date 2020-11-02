@@ -106,6 +106,15 @@ let userReducer = (state = initialStateOfUserReducer, action) => {
         trips: copyOfStateTrips,
         chosen_trip: action.payload
       }
+    case "DELETE_PLACE":
+      let copyOfAllPlaces = [...state.places].filter(tripObj => {
+        return tripObj.id !== action.payload.place.id
+      })
+      return {
+        ...state,
+        trips: action.payload.user.trips,
+        places: copyOfAllPlaces
+      }
     case "UPDATE_PLACE":
       let copyOfStatePlaces = [...state.places].map(placeObj => {
         if(placeObj.id === action.payload.place.id){

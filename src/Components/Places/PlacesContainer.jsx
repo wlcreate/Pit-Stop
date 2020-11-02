@@ -28,7 +28,7 @@ class PlacesContainer extends React.Component{
         })
     }
 
-    handleDelete = () => {
+    handleTripDelete = () => {
         console.log("I've been clicked to delete the Trip!")
         this.props.history.push("/trips")
         fetch(`http://localhost:3000/trips/${this.props.trip.id}`, {
@@ -50,7 +50,7 @@ class PlacesContainer extends React.Component{
         let {title, start_nice_timestamp, end_nice_timestamp, description} = this.props.trip
 
         let arrayOfComponents = this.props.places.map(placeObj => {
-            return <PlaceCard key={placeObj.id} trip={this.props.trip} place={placeObj}/>
+            return <PlaceCard key={placeObj.id} place={placeObj}/>
         })
 
         return(
@@ -60,7 +60,7 @@ class PlacesContainer extends React.Component{
                     <h3>{start_nice_timestamp} - {end_nice_timestamp}</h3>
                     <p>{description}</p>
                     <div>
-                            <button className="ui red button" onClick={this.handleDelete}>
+                            <button className="ui red button" onClick={this.handleTripDelete}>
                                 Delete
                             </button>
                             <Button onClick={this.handleUpdate}>Edit Trip</Button>
