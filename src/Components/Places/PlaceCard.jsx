@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
-import { Card, Button } from 'semantic-ui-react'
+import { Card, Button, Label } from 'semantic-ui-react'
 
 class PlaceCard extends React.Component{
 
@@ -11,7 +11,7 @@ class PlaceCard extends React.Component{
     }
 
     handleDelete = (evt) => {
-        debugger
+        this.props.history.push("/trips")
         fetch(`http://localhost:3000/places/${this.props.place.id}`, {
             method: "DELETE",
             headers: {
@@ -22,21 +22,38 @@ class PlaceCard extends React.Component{
         .then(res => res.json())
         .then(response => {
             console.log(response)
-            this.props.history.push("/trips")
             this.props.deletePlace(response)
         })
     }
 
     render(){
-        let {name, area, country} = this.props.place
+        let {name, category, area, country, revisit} = this.props.place
         return(
-            <Card onClick={this.handleClick}>
-                <Card.Content>
+            <Card>
+                <Card.Content onClick={this.handleClick}>
                     <Card.Header>{name}</Card.Header>
-                    <Card.Meta>{this.props.place.category.name}</Card.Meta>
+                    <Card.Meta>{category.name}</Card.Meta>
                     <Card.Description>
                         {area}, {country}
                     </Card.Description>
+                </Card.Content>
+                <Card.Content>
+                    <div className="ui blue labels">
+                        <a className="ui label">
+                            {category.name}
+                        </a>
+                        {
+                            {revisit}
+                            ?
+                            <a className="ui label">
+                                Revisit
+                            </a>
+                            :
+                            null
+                        }
+                    
+                    </div>
+                    
                 </Card.Content>
                 <Card.Content>
                     <div onClick={this.handleDelete}>

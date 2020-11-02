@@ -137,6 +137,29 @@ let userReducer = (state = initialStateOfUserReducer, action) => {
         chosen_place: action.payload.chosen_place,
         reflections: copyOfReflections
       }
+    case "DELETE_REFLECTION":
+      let copyOfAllReflections = [...state.reflections].filter(reflectionObj => {
+        return reflectionObj.id !== action.payload.reflection.id
+      })
+      return {
+        ...state,
+        trips: action.payload.user.trips,
+        reflections: copyOfAllReflections
+      }
+    case "UPDATE_REFLECTION":
+      // debugger
+      let copyOfStateReflections = [...state.reflections].map(reflectionObj => {
+        if(reflectionObj.id === action.payload.reflection.id){
+          return action.payload.reflection
+        } else {
+          return reflectionObj
+        }
+      })
+      return {
+        ...state,
+        trips: action.payload.user.trips,
+        reflections: copyOfStateReflections
+      }
     default:
       return state
   }

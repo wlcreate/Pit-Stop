@@ -10,12 +10,13 @@ import AddReflectionForm from './AddReflectionForm'
 class ReflectionsContainer extends React.Component{
 
     state = {
-        showForm: false
+        showEditForm: false,
+        showAddReflectionForm: false
     }
 
-    handleEditPlace = (evt) => {
+    handleEditPlace = () => {
         this.setState({
-            showForm: !this.state.showForm
+            showEditForm: !this.state.showEditForm
         })
     }
 
@@ -32,6 +33,12 @@ class ReflectionsContainer extends React.Component{
         .then(response => {
             console.log(response)
             this.props.deletePlace(response)
+        })
+    }
+
+    handleAddReflection = () => {
+        this.setState({
+            showAddReflectionForm: !this.state.showAddReflectionForm
         })
     }
 
@@ -68,7 +75,7 @@ class ReflectionsContainer extends React.Component{
                     </div> 
                 </div>
                 {
-                    this.state.showForm
+                    this.state.showEditForm
                     ?
                     <UpdatePlaceForm handleEditPlace={this.handleEditPlace}/>
                     :
@@ -76,6 +83,13 @@ class ReflectionsContainer extends React.Component{
                 }
                 <h2 className="card-group-title">My Reflections</h2>
                 <Button color='teal' onClick={this.handleAddReflection}>Add a Reflection</Button>
+                {
+                    this.state.showAddReflectionForm
+                    ?
+                    <AddReflectionForm handleEditPlace={this.handleEditPlace}/>
+                    :
+                    null
+                }
                 <CardGroup className="reflections-card-group">
                     {arrayOfComponents}
                 </CardGroup>
