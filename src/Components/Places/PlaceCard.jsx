@@ -23,7 +23,7 @@ class PlaceCard extends React.Component{
                 </Card.Content>
                 <Card.Content>
                     <div>
-                        <Button floated='right' basic color='red'>
+                        <Button floated='right' className="ui right floated red button">
                             Delete
                         </Button>
                     </div>

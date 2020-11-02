@@ -15,6 +15,10 @@ function AddTripModal(props) {
     let handleClick = (evt) => {
         evt.preventDefault()
         setOpen(false)
+        setTitle("")
+        setStartDate("")
+        setEndDate("")
+        setDescription("")
         fetch("http://localhost:3000/trips", {
             method: "POST",
             headers: {
@@ -31,7 +35,11 @@ function AddTripModal(props) {
         .then(res => res.json())
         .then(newTrip => {
             console.log(newTrip)
-            props.createNewTrip(newTrip)
+            if (newTrip.errors) {
+                alert(newTrip.errors)
+            } else {
+                props.createNewTrip(newTrip)
+            }
         })
     }
 
@@ -39,7 +47,7 @@ function AddTripModal(props) {
         <Modal
         closeIcon
         open={open}
-        trigger={<Button>Add a Trip</Button>}
+        trigger={<Button color='teal'>Add a Trip</Button>}
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         >

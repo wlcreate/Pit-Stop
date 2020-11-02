@@ -14,11 +14,14 @@ class TripsContainer extends React.Component{
         })
 
         return(
-            <div>
+            <div className="trips-container">
                 <h1>Hi {this.props.full_name} 👋🏼</h1>
+                <img id="trips-container-img" src="https://media.giphy.com/media/Fhgto5vYQ2NKE/giphy.gif" alt="trips image"/>
                 {/* <Button onClick={this.handleClick}>Add a Trip</Button> */}
+
+                <h2 className="card-group-title">All of my trips</h2>
                 <AddTripModal />
-                <CardGroup>
+                <CardGroup className="trips-card-group">
                     {arrayOfComponents}
                 </CardGroup>
             </div>

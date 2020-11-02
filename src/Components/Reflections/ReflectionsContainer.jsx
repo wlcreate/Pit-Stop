@@ -24,26 +24,27 @@ class ReflectionsContainer extends React.Component{
         })
 
         return(
-            <div>
-                <h1>{name}</h1>
-                <h3>{category.name}</h3>
-                <h3>{area}, {country}</h3>
-                <p>{address}</p>
-                {/* NEED TO FIGURE OUT THIS LOGIC */}
-                <p>Revisit?
-                {
-                    {revisit}
-                    ?
-                    "Yes"
-                    :
-                    "No"
-                }
-                </p>
-                <Button onClick={this.handleEditPlace}>Edit Place</Button>
-                <br></br>
-                <br></br>
-                <Button onClick={this.handleAddReflection}>Add a Reflection</Button>
-                <CardGroup>
+            <div className="reflections-container">
+                <div id="place-info">
+                    <h1>{name}</h1>
+                    <h3>{category.name}</h3>
+                    <h3>{area}, {country}</h3>
+                    <p>{address}</p>
+                    {/* NEED TO FIGURE OUT THIS LOGIC */}
+                    <p>Revisit?
+                    {
+                        {revisit}
+                        ?
+                        "Yes"
+                        :
+                        "No"
+                    }
+                    </p>
+                    <Button onClick={this.handleEditPlace}>Edit Place</Button>
+                </div>
+                <h2 className="card-group-title">My Reflections</h2>
+                <Button color='teal' onClick={this.handleAddReflection}>Add a Reflection</Button>
+                <CardGroup className="reflections-card-group">
                     {arrayOfComponents}
                 </CardGroup>
             </div>

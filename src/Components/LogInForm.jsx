@@ -53,30 +53,37 @@ class LogInForm extends React.Component{
     render(){
         let {username, password, error_message} = this.state
         return(
-            <div>
-                <h1>Log In</h1>
-                <p>{error_message}</p>
+            <div className="login">
+                <h1 id="login-h1">Welcome back!</h1>
+                <img className="animated-gif" src="https://media.giphy.com/media/dYUslDahf6Uw71gH3t/giphy.gif" alt="login welcome" />
+                <p id="login-p">Login to remember where you've gone and where you'll go</p>
+                <p className="error">{error_message}</p>
                 <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="username">Username</label>
-                    <input type="text"
-                        name="username"
-                        value={username}
-                        onChange={this.handleChange}
-                    />
-                    <br></br>
-                    <label htmlFor="password">Password</label>
-                    <input type="password"
-                        name="password"
-                        value={password}
-                        onChange={this.handleChange}
-                    />
-                    <br></br>
-                    <input type="submit" value="Welcome Back!"/>
+                    <div class="input-icons">
+                        <label htmlFor="username">
+                            <i aria-hidden="true" class="user icon"></i>
+                        </label>
+                        <input className="login-input" type="text"
+                            name="username"
+                            placeholder="username"
+                            value={username}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <div class="input-icons">
+                        <label htmlFor="password">
+                            <i aria-hidden="true" class="key icon"></i>
+                        </label>
+                        <input className="login-input" type="password"
+                            name="password"
+                            placeholder="password"
+                            value={password}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <input className="login-submit" type="submit" value="Login"/>
                 </form>
-                <p>
-                    New to us?
-                    <Link to="/signup">Sign up!</Link>
-                </p>
+                <p className="login-bottom">New to us?</p><Link className="login-bottom" to="/signup">Sign up!</Link>
             </div>
         )
     }

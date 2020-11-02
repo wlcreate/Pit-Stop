@@ -86,7 +86,7 @@ class UpdateTripForm extends React.Component{
                     <Form.Field
                         id='submit'
                         control={Button}
-                        content='Update!'
+                        content='Update'
                         onClick={this.handleClick}
                     />
                 </Form>

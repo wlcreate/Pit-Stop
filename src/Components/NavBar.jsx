@@ -29,9 +29,11 @@ class NavBar extends React.Component {
                         <li>
                             <NavLink to="/account">Account</NavLink>
                         </li>
-                        <li onClick={this.handleClick}>
-                            <NavLink to="/">Log Out</NavLink>
-                        </li>
+                        <div className="topnav-right">
+                            <li onClick={this.handleClick}>
+                                <NavLink to="/">Log Out</NavLink>
+                            </li>
+                        </div>
                     </ul>
                     :
                     <ul className="nav">
@@ -41,12 +43,14 @@ class NavBar extends React.Component {
                         <li>
                             <NavLink to="/">Home</NavLink>
                         </li>
-                        <li>
-                            <NavLink to="/login">Log In</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="/signup">Sign Up</NavLink>
-                        </li>
+                        <div className="topnav-right">
+                            <li>
+                                <NavLink to="/login">Login</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/signup">Sign Up</NavLink>
+                            </li>
+                        </div>
                     </ul>
                 }
             </div>

@@ -28,20 +28,44 @@ class PlacesContainer extends React.Component{
         })
     }
 
+    handleDelete = () => {
+        console.log("I've been clicked!")
+        this.props.history.push("/trips")
+        fetch(`http://localhost:3000/trips/${this.props.trip.id}`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": this.props.token
+            }
+        })
+        .then(res => res.json())
+        .then(deletedObj => {
+            // console.log(deletedObj)
+            this.props.deleteTrip(deletedObj)
+        })
+    }
+
     render(){
 
-        let {title, start_date, end_date, description} = this.props.trip
+        let {title, start_nice_timestamp, end_nice_timestamp, description} = this.props.trip
 
         let arrayOfComponents = this.props.places.map(placeObj => {
             return <PlaceCard key={placeObj.id} trip={this.props.trip} place={placeObj}/>
         })
 
         return(
-            <div>
-                <h1>{title}</h1>
-                <h3>{start_date} - {end_date}</h3>
-                <p>{description}</p>
-                <Button onClick={this.handleUpdate}>Edit Trip</Button>
+            <div className="places-container">
+                <div id="trip-info">
+                    <h1>{title}</h1>
+                    <h3>{start_nice_timestamp} - {end_nice_timestamp}</h3>
+                    <p>{description}</p>
+                    <div>
+                            <button className="ui red button" onClick={this.handleDelete}>
+                                Delete
+                            </button>
+                            <Button onClick={this.handleUpdate}>Edit Trip</Button>
+                    </div>
+                </div>
                 {
                     this.state.showForm
                     ?
@@ -49,11 +73,10 @@ class PlacesContainer extends React.Component{
                     :
                     null
                 }
-                <br></br>
-                <br></br>
                 {/* <Button onClick={this.handleAddPlace}>Add a Place</Button> */}
+                <h2 className="card-group-title">Where I went</h2>
                 <AddPlaceModal />
-                <CardGroup>
+                <CardGroup className="places-card-group">
                     {arrayOfComponents}
                 </CardGroup>
             </div>
@@ -73,7 +96,8 @@ let mapStateToProps = (globalState) => {
     // let trip = globalState.user.trips.find(trip => trip.places === globalState.user.places)
     return {
         places: globalState.user.places,
-        trip: globalState.user.chosen_trip
+        trip: globalState.user.chosen_trip,
+        token: globalState.user.token
     }
 }
 
@@ -85,9 +109,19 @@ let setCategories = (allCategories) => {
     }
 }
 
+// Action creator -> Function definition down
+    // Invoke that action creator within the component -> Function invocation up
+let deleteTrip = (deletedTrip) => {
+    return {
+        type: "DELETE_TRIP",
+        payload: deletedTrip
+    }
+}
+
 // sending information
 let mapDispatchToProps = {
-    setCategories: setCategories
+    setCategories: setCategories,
+    deleteTrip: deleteTrip
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(PlacesContainer))

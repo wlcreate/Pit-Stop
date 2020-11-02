@@ -11,6 +11,7 @@ import SignUpForm from './Components/SignUpForm'
 import TripsContainer from './Components/Trips/TripsContainer'
 import PlacesContainer from './Components/Places/PlacesContainer'
 import ReflectionsContainer from './Components/Reflections/ReflectionsContainer';
+import Footer from './Components/Footer'
 
 class App extends React.Component{
 
@@ -60,6 +61,7 @@ class App extends React.Component{
           {/* <Route path="/account" component={TripsContainer}/> */}
           <Route render={ () => <p>Page not Found</p> } />
         </Switch>
+        <Footer />
       </div>
     ) 
   }

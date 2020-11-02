@@ -22,29 +22,29 @@ class TripCard extends React.Component{
         })
         .then(res => res.json())
         .then(deletedObj => {
-            console.log(deletedObj)
+            // console.log(deletedObj)
             this.props.deleteTrip(deletedObj)
         })
     }
 
     render(){
         
-        let {title, start_date, end_date, description} = this.props.trip
+        let {title, start_nice_timestamp, end_nice_timestamp, description} = this.props.trip
 
         return(
             <Card>
                 <Card.Content onClick={this.handleClick}>
                     <Card.Header>{title}</Card.Header>
-                    <Card.Meta>{start_date} - {end_date}</Card.Meta>
+                    <Card.Meta>{start_nice_timestamp} - {end_nice_timestamp}</Card.Meta>
                     <Card.Description>
                         {description}
                     </Card.Description>
                 </Card.Content>
                 <Card.Content>
                     <div onClick={this.handleDelete}>
-                        <button className="ui right floated red button" >
+                        <Button floated='right' className="ui right floated red button">
                             Delete
-                        </button>
+                        </Button>
                     </div>
                 </Card.Content>
             </Card>

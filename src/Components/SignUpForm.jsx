@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
-import { Input, Form, Button } from 'semantic-ui-react'
+import { Input, Form, Button, Message } from 'semantic-ui-react'
 
 class SignUpForm extends React.Component{
 
@@ -9,7 +9,8 @@ class SignUpForm extends React.Component{
         first_name: "",
         last_name: "",
         username: "",
-        password: ""
+        password: "",
+        errors: []
     }
 
     handleChange = (evt) => {
@@ -37,9 +38,13 @@ class SignUpForm extends React.Component{
         .then(res => {
             // console.log(res)
             // debugger
-            if (res.error) {
-                console.error(res.error)
-                alert(res.error)
+            if (res.errors) {
+                // debugger
+                console.error(res.errors)
+                this.setState({
+                    errors: res.errors
+                })
+                // alert(res.errors)
               }
               else {
                 localStorage.token = res.token
@@ -53,47 +58,62 @@ class SignUpForm extends React.Component{
 
         let {first_name, last_name, username, password} = this.state
 
+        let showErrors = this.state.errors.map(error => {
+            return <li key={error.id}>{error}</li>
+        })
+        // debugger
         return(
-            <div>
-                <h1>Sign Up</h1>
-                <Form>
-                    <Form.Field id="first_name"
-                        control={Input}
-                        label="First name"
+            <div className="signup">
+                <h1 id="signup-h1">Nice to meet you!</h1>
+                <img className="animated-gif" src="https://media.giphy.com/media/toelXGUsYD6vtCN408/giphy.gif" alt="signup gif"/>
+                
+                <p id="signup-p">Sign up to keep track and reflect on where you've gone.</p>
+                <div>
+                    <ul className="error">
+                        {showErrors}
+                    </ul>
+                </div>
+                <Form id="signup-form">
+                    <Form.Field inline>
+                        <label id="first_name">First name</label>
+                        <Input 
                         placeholder="First name"
                         name="first_name"
                         value={first_name}
                         onChange={this.handleChange}
                         width={8}
-                    />
-                    <Form.Field id="last_name"
-                        control={Input}
-                        label="Last name"
+                        />
+                    </Form.Field>
+                    <Form.Field inline>
+                        <label id="last_name">Last name</label>
+                        <Input
                         placeholder="Last name"
                         name="last_name"
                         value={last_name}
                         onChange={this.handleChange}
                         width={8}
-                    />
-                    <Form.Field id="username"
-                        control={Input}
-                        label="Username"
+                        />
+                    </Form.Field>
+                    <Form.Field inline>
+                        <label id="username">Username</label>
+                        <Input
                         placeholder="Username"
                         name="username"
                         value={username}
                         onChange={this.handleChange}
                         width={8}
-                    />
-                    <Form.Field id="password"
-                        control={Input}
-                        label="Password"
+                        />
+                    </Form.Field>
+                    <Form.Field inline>
+                        <label id="password">Password</label>
+                        <Input type="password"
                         placeholder="Password"
-                        type="password"
                         name="password"
                         value={password}
                         onChange={this.handleChange}
                         width={8}
-                    />
+                        />
+                    </Form.Field>
                     <Form.Field
                         id='submit'
                         control={Button}
@@ -101,10 +121,7 @@ class SignUpForm extends React.Component{
                         onClick={this.handleClick}
                     />
                 </Form>
-                <p>
-                    Have an Account?
-                    <Link to="/login">Log In!</Link>
-                </p>
+                <p className="login-bottom">Have an Account?</p><Link className="login-bottom" to="/login">Login</Link>
             </div>
         )
     }
