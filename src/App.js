@@ -9,9 +9,11 @@ import Home from './Components/Home'
 import LogInForm from './Components/LogInForm'
 import SignUpForm from './Components/SignUpForm'
 import TripsContainer from './Components/Trips/TripsContainer'
-import PlacesContainer from './Components/Places/PlacesContainer'
+import TripPage from './Components/Places/TripPage'
 import ReflectionsContainer from './Components/Reflections/ReflectionsContainer';
 import Footer from './Components/Footer'
+import AccountPage from './Components/Account/AccountPage'
+import UpdateAccountForm from './Components/Account/UpdateAccountForm'
 
 class App extends React.Component{
 
@@ -38,7 +40,15 @@ class App extends React.Component{
 
   renderPlaces = () => {
     if(this.props.token){
-      return <PlacesContainer />
+      return <TripPage />
+    } else {
+      return <Redirect to="/trips"/>
+    }
+  }
+
+  renderReflections = () => {
+    if(this.props.token){
+      return <ReflectionsContainer />
     } else {
       return <Redirect to="/trips"/>
     }
@@ -57,8 +67,10 @@ class App extends React.Component{
           <Route path="/signup" component={SignUpForm}/>
           <Route path="/trips" exact component={TripsContainer}/>
           <Route path="/trips/:id/places" exact render={this.renderPlaces}/>
-          <Route path="/trips/:id/places/:id/reflections" exact component={ReflectionsContainer}/>
-          {/* <Route path="/account" component={TripsContainer}/> */}
+          <Route path="/trips/:id/places/:id/reflections" exact render={this.renderReflections}/>
+          {/* <Route path="/trips/:id/places/:id/reflections" exact component={ReflectionsContainer}/> */}
+          <Route path="/account" exact component={AccountPage}/>
+          <Route path="/account/edit" exact component={UpdateAccountForm}/>
           <Route render={ () => <p>Page not Found</p> } />
         </Switch>
         <Footer />
@@ -85,4 +97,4 @@ let mapDispatchToProps = {
   setUserInfo: setUserInfo
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));

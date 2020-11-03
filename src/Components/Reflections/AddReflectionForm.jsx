@@ -59,7 +59,7 @@ class AddReflectionForm extends React.Component{
                         onChange={this.handleChange}
                     />
                     <br></br>
-                    <label htmlFor="rating">Rating</label>
+                    <label htmlFor="rating">Rating (must be between 0 - 10)</label>
                     <input type="number" min="0" max="10"
                         name="rating"
                         value={rating}

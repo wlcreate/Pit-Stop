@@ -35,6 +35,10 @@ function AddTripModal(props) {
         .then(res => res.json())
         .then(newTrip => {
             console.log(newTrip)
+            setTitle("")
+            setStartDate("")
+            setEndDate("")
+            setDescription("")
             if (newTrip.errors) {
                 alert(newTrip.errors)
             } else {

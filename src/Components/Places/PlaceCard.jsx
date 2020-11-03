@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
-import { Card, Button, Label } from 'semantic-ui-react'
+import { Card, Label } from 'semantic-ui-react'
 
 class PlaceCard extends React.Component{
 
@@ -10,24 +10,25 @@ class PlaceCard extends React.Component{
         this.props.history.push(`/trips/${this.props.trip.id}/places/${this.props.place.id}/reflections`)
     }
 
-    handleDelete = (evt) => {
-        this.props.history.push("/trips")
-        fetch(`http://localhost:3000/places/${this.props.place.id}`, {
-            method: "DELETE",
-            headers: {
-                'Content-Type': 'application/json',
-                "Authorization": this.props.token
-            }
-        })
-        .then(res => res.json())
-        .then(response => {
-            console.log(response)
-            this.props.deletePlace(response)
-        })
-    }
+    // handleDelete = (evt) => {
+    //     this.props.history.push("/trips")
+    //     fetch(`http://localhost:3000/places/${this.props.place.id}`, {
+    //         method: "DELETE",
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             "Authorization": this.props.token
+    //         }
+    //     })
+    //     .then(res => res.json())
+    //     .then(response => {
+    //         console.log(response)
+    //         this.props.deletePlace(response)
+    //     })
+    // }
 
     render(){
         let {name, category, area, country, revisit} = this.props.place
+        // console.log(revisit)
         return(
             <Card>
                 <Card.Content onClick={this.handleClick}>
@@ -43,7 +44,7 @@ class PlaceCard extends React.Component{
                             {category.name}
                         </a>
                         {
-                            {revisit}
+                            revisit
                             ?
                             <a className="ui label">
                                 Revisit
@@ -55,13 +56,13 @@ class PlaceCard extends React.Component{
                     </div>
                     
                 </Card.Content>
-                <Card.Content>
+                {/* <Card.Content>
                     <div onClick={this.handleDelete}>
                         <Button floated='right' className="ui right floated red button">
                             Delete
                         </Button>
                     </div>
-                </Card.Content>
+                </Card.Content> */}
             </Card>
         )
     }

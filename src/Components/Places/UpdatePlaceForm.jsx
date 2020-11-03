@@ -7,7 +7,7 @@ class UpdatePlaceForm extends React.Component{
 
     state = {
         name: this.props.place.name,
-        category: this.props.place.category,
+        category: this.props.place.category.id,
         address: this.props.place.address,
         area: this.props.place.area,
         country: this.props.place.country,

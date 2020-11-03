@@ -49,11 +49,17 @@ function AddPlaceModal(props) {
         .then(res => res.json())
         .then(response => {
             console.log(response)
+            setName("")
+            setAddress("")
+            setArea("")
+            setRevisit(true)
+            setSelectedCountry("")
+            setSelectedCategory(1)
             // debugger
             props.createNewPlace(response)
         })
     }
-    console.log(revisit)
+    // console.log(revisit)
     return (
         <Modal
         closeIcon

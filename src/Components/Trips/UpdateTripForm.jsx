@@ -3,13 +3,18 @@ import {connect} from 'react-redux'
 import { Input, Form, Button } from 'semantic-ui-react'
 
 class UpdateTripForm extends React.Component{
-
-    state = {
-        title: this.props.trip.title,
-        start_date: this.props.trip.start_date,
-        end_date: this.props.trip.end_date,
-        description: this.props.trip.description
+    constructor(props){
+        super(props)
+        let s_array = props.trip.start_nice_timestamp.split("/")
+        let e_array = props.trip.end_nice_timestamp.split("/")
+        this.state = {
+            title: props.trip.title,
+            start_date: `${s_array[2]}-${s_array[0]}-${s_array[1]}`,
+            end_date: `${e_array[2]}-${e_array[0]}-${e_array[1]}`,
+            description: props.trip.description
+        }
     }
+    
 
     handleChange = (evt) => {
         this.setState({
@@ -45,6 +50,8 @@ class UpdateTripForm extends React.Component{
 
         let {title, start_date, end_date, description} = this.state
 
+        console.log(this.props.trip)
+        console.log(start_date)
         return(
             <div>
                 <h2>Edit {this.props.trip.title}!</h2>

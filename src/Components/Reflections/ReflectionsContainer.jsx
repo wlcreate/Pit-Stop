@@ -10,8 +10,7 @@ import AddReflectionForm from './AddReflectionForm'
 class ReflectionsContainer extends React.Component{
 
     state = {
-        showEditForm: false,
-        showAddReflectionForm: false
+        showEditForm: false
     }
 
     handleEditPlace = () => {
@@ -36,12 +35,6 @@ class ReflectionsContainer extends React.Component{
         })
     }
 
-    handleAddReflection = () => {
-        this.setState({
-            showAddReflectionForm: !this.state.showAddReflectionForm
-        })
-    }
-
     render(){
 
         let {name, address, area, country, revisit, category} = this.props.place
@@ -57,10 +50,9 @@ class ReflectionsContainer extends React.Component{
                     <h3>{category.name}</h3>
                     <h3>{area}, {country}</h3>
                     <p>{address}</p>
-                    {/* NEED TO FIGURE OUT THIS LOGIC */}
                     <p>Revisit?
                     {
-                        {revisit}
+                        revisit
                         ?
                         "Yes"
                         :
@@ -82,14 +74,6 @@ class ReflectionsContainer extends React.Component{
                     null
                 }
                 <h2 className="card-group-title">My Reflections</h2>
-                <Button color='teal' onClick={this.handleAddReflection}>Add a Reflection</Button>
-                {
-                    this.state.showAddReflectionForm
-                    ?
-                    <AddReflectionForm handleEditPlace={this.handleEditPlace}/>
-                    :
-                    null
-                }
                 <CardGroup className="reflections-card-group">
                     {arrayOfComponents}
                 </CardGroup>

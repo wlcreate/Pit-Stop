@@ -33,8 +33,7 @@ let categoryReducer = (state = initialStateOfCategoryReducer, action) => {
 
 // ------ User Reducer ------
 let initialStateOfUserReducer = {
-  username: "",
-  full_name: "",
+  user: {},
   token: "",
   trips: [],
   chosen_trip: {},
@@ -49,8 +48,7 @@ let userReducer = (state = initialStateOfUserReducer, action) => {
       // console.log(action.payload)
       return {
         ...state,
-        username: action.payload.user.username,
-        full_name: action.payload.user.full_name,
+        user: action.payload.user,
         token: action.payload.token,
         trips: action.payload.user.trips
       }
