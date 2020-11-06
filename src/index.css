@@ -264,3 +264,35 @@ img.animated-gif{
   padding-top: 1px;
   padding-left: 20px;
 }
+
+/* Map */
+
+.places-map {
+  /* display: block;
+  margin-left: auto;
+  margin-right: auto; */
+  margin-left: 250px;
+}
+
+.marker-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.marker-btn img {
+  width: 35px;
+}
+
+.sidebarStyle {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 12px;
+  background-color: #404040;
+  color: #ffffff;
+  z-index: 1 !important;
+  padding: 6px;
+  font-weight: bold;
+}

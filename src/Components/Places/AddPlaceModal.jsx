@@ -15,6 +15,8 @@ function AddPlaceModal(props) {
     let [revisit, setRevisit] = useState(true)
     let [selectedCountry, setSelectedCountry] = useState("") // ! need to decide
     let [selectedCategory, setSelectedCategory] = useState(1)
+    let [latitude, setLatitude] = useState("")
+    let [longitude, setLongitude] = useState("")
 
     // options for categories dropdown
     let categoriesList = () => {
@@ -24,6 +26,26 @@ function AddPlaceModal(props) {
                 return <option key={category.id} value={category.id}>{category.name}</option>
             })
         }
+    }
+
+    let inputUserLocation = () => {
+
+        function success (position) {
+            setLatitude(position.coords.latitude)
+            setLongitude(position.coords.longitude)
+        }
+
+        function error () {
+            alert('Sorry, no position')
+        }
+
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(success, error)
+        }
+        // navigator.geolocation.getCurrentPosition((position) => {
+        //     setLatitude(position.coords.latitude)
+        //     setLongitude(position.coords.longitude)
+        // })
     }
 
     let handleClick = (evt) => {
@@ -43,6 +65,8 @@ function AddPlaceModal(props) {
                 revisit,
                 country: selectedCountry,
                 category_id: selectedCategory,
+                latitude,
+                longitude,
                 trip_id: props.trip.id
             })
         })
@@ -55,6 +79,8 @@ function AddPlaceModal(props) {
             setRevisit(true)
             setSelectedCountry("")
             setSelectedCategory(1)
+            setLatitude("")
+            setLongitude("")
             // debugger
             props.createNewPlace(response)
         })
@@ -73,7 +99,7 @@ function AddPlaceModal(props) {
             <Form>
                 <FormField>
                     <label htmlFor="name">Name</label>
-                    <input type="text" placeholder="Name"
+                    <input type="text" autoComplete="off" placeholder="Name"
                         name="name"
                         value={name}
                         onChange={e => {setName(e.target.value)}}
@@ -87,15 +113,31 @@ function AddPlaceModal(props) {
                 </FormField>
                 <FormField>
                     <label htmlFor="address">Address</label>
-                    <input type="text" placeholder="Address"
+                    <input type="text" autoComplete="off" placeholder="Address"
                         name="address"
                         value={address}
                         onChange={e => {setAddress(e.target.value)}}
                     />
                 </FormField>
                 <FormField>
+                    <label htmlFor="latitude">Latitude</label>
+                    <input type="text" autoComplete="off" placeholder="ex: 40.730610"
+                        name="latitude"
+                        value={latitude}
+                        onChange={e => {setLatitude(e.target.value)}}
+                    />
+                </FormField>
+                <FormField>
+                    <label htmlFor="longitude">Longitude</label>
+                    <input type="text" autoComplete="off" placeholder="ex: -73.935242"
+                        name="longitude"
+                        value={longitude}
+                        onChange={e => {setLongitude(e.target.value)}}
+                    />
+                </FormField>
+                <FormField>
                     <label htmlFor="area">Area</label>
-                    <input type="text" placeholder="Area"
+                    <input type="text" autoComplete="off" placeholder="Area"
                         name="area"
                         value={area}
                         onChange={e => {setArea(e.target.value)}}
@@ -136,8 +178,11 @@ function AddPlaceModal(props) {
             </Form>
         </Modal.Content>
         <Modal.Actions>
+            <Button onClick={inputUserLocation}>
+                <Icon name='checkmark' /> Use my Location
+            </Button>
             <Button color='green' onClick={handleClick}>
-            <Icon name='checkmark' /> Create Place
+                <Icon name='checkmark' /> Create Place
             </Button>
         </Modal.Actions>
         </Modal>

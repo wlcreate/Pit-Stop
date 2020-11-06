@@ -11,7 +11,9 @@ class UpdatePlaceForm extends React.Component{
         address: this.props.place.address,
         area: this.props.place.area,
         country: this.props.place.country,
-        revisit: this.props.place.revisit
+        revisit: this.props.place.revisit,
+        latitude: this.props.place.latitude,
+        longitude: this.props.place.longitude
     }
 
     handleName = (value) => {
@@ -50,6 +52,18 @@ class UpdatePlaceForm extends React.Component{
         })
     }
 
+    handleLatitude = (value) => {
+        this.setState({
+            latitude: value
+        })
+    }
+
+    handleLongitude = (value) => {
+        this.setState({
+            longitude: value
+        })
+    }
+
     handleClick = (evt) => {
         evt.preventDefault()
         let {name, category, address, area, country, revisit} = this.state
@@ -78,7 +92,7 @@ class UpdatePlaceForm extends React.Component{
 
     render(){
 
-        let {name, category, address, area, country, revisit} = this.state
+        let {name, category, address, area, country, revisit, latitude, longitude} = this.state
 
         // options for categories dropdown
         let categoriesList = () => {
@@ -94,7 +108,7 @@ class UpdatePlaceForm extends React.Component{
             <div>
                 <h2>Edit {this.props.place.name}!</h2>
                 <Form>
-                    <Form.Field id="name"
+                    <Form.Field id="name" autoComplete="off"
                             control={Input}
                             label="Name"
                             value={name}
@@ -108,14 +122,28 @@ class UpdatePlaceForm extends React.Component{
                             {categoriesList()}
                         </select>
                     </Form.Field>
-                    <Form.Field id="address"
+                    <Form.Field id="address" autoComplete="off"
                             control={Input}
                             label="Address"
                             value={address}
                             onChange={e => {this.handleAddress(e.target.value)}}
                             width={8}
                         />
-                    <Form.Field id="area"
+                    <Form.Field id="latitude" autoComplete="off"
+                            control={Input}
+                            label="Latitude"
+                            value={latitude}
+                            onChange={e => {this.handleLatitude(e.target.value)}}
+                            width={8}
+                        />
+                    <Form.Field id="longitude" autoComplete="off"
+                            control={Input}
+                            label="Longitude"
+                            value={longitude}
+                            onChange={e => {this.handleLongitude(e.target.value)}}
+                            width={8}
+                        />
+                    <Form.Field id="area" autoComplete="off"
                             control={Input}
                             label="Area"
                             value={area}

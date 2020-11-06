@@ -8,6 +8,7 @@ import PlacesSearch from './PlacesSearch'
 import PlacesCategoryFilter from './PlacesCategoryFilter'
 import PlacesRevisitFilter from './PlacesRevisitFilter'
 import PlacesContainer from './PlacesContainer'
+import PlacesMap from './PlacesMap'
 
 class TripPage extends React.Component{
 
@@ -133,6 +134,7 @@ class TripPage extends React.Component{
                 }
                 {/* <Button onClick={this.handleAddPlace}>Add a Place</Button> */}
                 <h2 className="card-group-title">Where I went</h2>
+                <PlacesMap places={this.findPlaces()}/>
                 <PlacesSearch searchTerm={this.state.searchTerm} changeSearchTerm={this.changeSearchTerm}/>
                 <PlacesCategoryFilter selectedCategory={this.state.selectedCategory} changeSelectedCategory={this.changeSelectedCategory}/>
                 <PlacesRevisitFilter selectedRevisit={this.state.selectedRevisit} changeSelectedRevisit={this.changeSelectedRevisit}/>
