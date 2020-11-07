@@ -7,11 +7,12 @@ import UpdateReflectionForm from './UpdateReflectionForm'
 class ReflectionCard extends React.Component{
 
     state = {
-        showForm: false
+        showForm: false,
+        media: {}
     }
 
     handleDelete = () => {
-        this.props.history.push("/trips")
+        // this.props.history.push("/trips")
         fetch(`http://localhost:3000/reflections/${this.props.reflection.id}`, {
             method: "DELETE",
             headers: {
@@ -32,8 +33,36 @@ class ReflectionCard extends React.Component{
         })
     }
 
+    handleChange = (evt) => {
+        this.setState({
+            [evt.target.name]: evt.target.files[0]
+        })
+    }
+
+    handleMediaUpload = (evt) => {
+        evt.preventDefault()
+        if (this.state.media) {
+            const form = new FormData()
+            form.append("media", this.state.media)
+            fetch(`http://localhost:3000/reflections/${this.props.reflection.id}/media`, {
+                method: "PATCH",
+                body: form
+            })
+            .then(res => res.json())
+            .then(response => {
+                console.log(response)
+                // debugger
+                this.props.updateReflection(response)
+            })
+        } else {
+            console.log("I've been clicked")
+            alert("No media uploaded")
+        }
+        
+    }
+
     render(){
-        let {nice_timestamp, rating, content} = this.props.reflection
+        let {nice_timestamp, rating, content, media} = this.props.reflection
         return(
             <div class="ui fluid card">
                 <Card fluid>
@@ -41,6 +70,14 @@ class ReflectionCard extends React.Component{
                         <Card.Header>{nice_timestamp}</Card.Header>
                         <Card.Meta>Rating: {rating}</Card.Meta>
                         <Card.Description>
+                            {
+                                media
+                                ?
+                                <img src={media} alt="reflection"/>
+                                :
+                                null
+                            }
+                            <br/>
                             {content}
                         </Card.Description>
                     </Card.Content>
@@ -52,6 +89,15 @@ class ReflectionCard extends React.Component{
                             <Button floated='right' className="ui right floated button" onClick={this.handleEditReflection}> 
                                 Edit Reflection
                             </Button>
+                            <form onSubmit={this.handleMediaUpload}>
+                                {/* <label htmlFor="media">Add Picture or Video</label> */}
+                                <input type="file"
+                                    name="media"
+                                    onChange={this.handleChange}
+                                />
+                                <br/>
+                                <input type="submit" value="Add Picture"/>
+                            </form>
                         </div>
                     </Card.Content>
                 </Card>
@@ -85,10 +131,19 @@ let deleteReflection = (deletedReflection) => {
     }
 }
 
+// Action Creator
+let updateReflection = (updatedInfo) => {
+    return {
+        type: "UPDATE_REFLECTION",
+        payload: updatedInfo
+    }
+}
+
 // mapDispatchToProps sends information
     // is a POJO that will be merged into the props of the component
 let mapDispatchToProps = {
-    deleteReflection: deleteReflection
+    deleteReflection: deleteReflection,
+    updateReflection: updateReflection
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ReflectionCard))

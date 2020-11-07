@@ -11,7 +11,7 @@ const PlacesMap = (props) => {
         longitude: -95.712891, // for demonstration purposes will be doing it set on US
         // latitude: 0, // but intention of app is to include international trips, so ideally can be 0
         // longitude: 0, // but intention of app is to include international trips, so ideally can be 0
-        zoom: 1.5
+        zoom: 3
     })
     const [selectedPlace, setSelectedPlace] = useState(null)
 
