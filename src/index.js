@@ -39,7 +39,8 @@ let initialStateOfUserReducer = {
   chosen_trip: {},
   places: [],
   chosen_place: {},
-  reflections: []
+  reflections: [],
+  submit_password: false
 }
 
 let userReducer = (state = initialStateOfUserReducer, action) => {
@@ -157,6 +158,11 @@ let userReducer = (state = initialStateOfUserReducer, action) => {
         ...state,
         trips: action.payload.user.trips,
         reflections: copyOfStateReflections
+      }
+    case "SUBMITTED_PASSWORD":
+      return {
+        ...state,
+        submit_password: true
       }
     default:
       return state

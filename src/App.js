@@ -55,6 +55,15 @@ class App extends React.Component{
     }
   }
 
+  renderUpdateAccountForm = () => {
+    if (this.props.submit_password === true) {
+      return <UpdateAccountForm />
+    } else {
+      alert("You are not authorized to edit this account")
+      return <Redirect to="/account" />
+    }
+  }
+
   render(){
     return (
       <div className="App">
@@ -71,7 +80,8 @@ class App extends React.Component{
           <Route path="/trips/:id/places/:id/reflections" exact render={this.renderReflections}/>
           {/* <Route path="/trips/:id/places/:id/reflections" exact component={ReflectionsContainer}/> */}
           <Route path="/account" exact component={AccountPage}/>
-          <Route path="/account/edit" exact component={UpdateAccountForm}/>
+          <Route path="/account/edit" exact render={this.renderUpdateAccountForm}/>
+          {/* <Route path="/account/edit" exact component={UpdateAccountForm}/> */}
           <Route component={NotFoundPage} />
           {/* <Route render={ () => <p>Page not Found</p> } /> */}
         </Switch>
@@ -83,7 +93,8 @@ class App extends React.Component{
 
 let mapStateToProps = (globalState) => {
   return {
-      token: globalState.user.token
+      token: globalState.user.token,
+      submit_password: globalState.user.submit_password 
   }
 }
 

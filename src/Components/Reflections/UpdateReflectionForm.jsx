@@ -55,7 +55,8 @@ class UpdateReflectionForm extends React.Component{
             <div id="edit-reflection">
                 <h2>Edit {this.props.reflection.nice_timestamp}!</h2>
                 <form onSubmit={this.handleUpdateReflection}>
-                    <label htmlFor="date_visited">Date Visited</label>
+                    {/* <label htmlFor="date_visited">Date Visited</label> */}
+                    <label htmlFor="date_visited">Date</label>
                     <input id="reflection-date" type="date"
                         name="date_visited"
                         value={date_visited}

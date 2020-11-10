@@ -30,6 +30,7 @@ function PasswordModal(props) {
             if(response.error){
                 alert(response.error)
             } else {
+                props.submitPassword()
                 props.history.push("/account/edit")
             }
         })
@@ -73,4 +74,17 @@ let mapStateToProps = (globalState) => {
     }
 }
 
-export default connect(mapStateToProps)(withRouter(PasswordModal))
+// Action Creator
+let submitPassword = (password) => {
+    return {
+        type: "SUBMITTED_PASSWORD",
+        payload: password
+    }
+}
+
+// sending information
+let mapDispatchToProps = {
+    submitPassword: submitPassword
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(PasswordModal))

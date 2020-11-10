@@ -52,7 +52,8 @@ class AddReflectionForm extends React.Component{
             <div className="add-reflection">
                 <h2>Add a Reflection</h2>
                 <form onSubmit={this.handleAddReflection}>
-                    <label htmlFor="date_visited">Date Visited</label>
+                    {/* <label htmlFor="date_visited">Date Visited</label> */}
+                    <label htmlFor="date_visited">Date</label>
                     <input id="reflection-date" type="date"
                         name="date_visited"
                         value={date_visited}

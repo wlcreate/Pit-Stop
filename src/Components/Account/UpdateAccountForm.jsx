@@ -52,35 +52,35 @@ class UpdateAccountForm extends React.Component{
                 <h1>Update Your Account</h1>
                 <form onSubmit={this.handleUpdate}>
                     <label htmlFor="first_name">First name</label>
-                    <input type="text" id="update-account-input"
+                    <input type="text" className="update-account-input"
                         name="first_name"
                         value={first_name}
                         onChange={this.handleChange}
                     />
                     <br></br>
                     <label htmlFor="last_name">Last name</label>
-                    <input type="text" id="update-account-input"
+                    <input type="text" className="update-account-input"
                         name="last_name"
                         value={last_name}
                         onChange={this.handleChange}
                     />
                     <br></br>
                     <label htmlFor="username">username</label>
-                    <input type="text" id="update-account-input"
+                    <input type="text" className="update-account-input"
                         name="username"
                         value={username}
                         onChange={this.handleChange}
                     />
                     <br></br>
                     <label htmlFor="password">Password</label>
-                    <input type="" id="update-account-input"
+                    <input type="" className="update-account-input"
                         name="password"
                         value={this.state.password}
                         onChange={this.handleChange}
                     />
                     <br></br>
                     <label htmlFor="confirm_password">Confirm Password</label>
-                    <input type="password" id="update-account-input"
+                    <input type="password" className="update-account-input"
                         name="confirm_password"
                         value={this.state.confirm_password}
                         onChange={this.handleChange}

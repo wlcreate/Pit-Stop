@@ -393,7 +393,7 @@ img.animated-gif{
   margin-top: 20px;
   text-align: left;
   background-color: azure;
-  height: 210px; 
+  height: 225px; 
   width: 700px;
   border-radius: 20px;
   /* padding: 10px; */
@@ -421,10 +421,11 @@ img.animated-gif{
 /* Map */
 
 .places-map {
-  /* display: block;
-  margin-left: auto;
-  margin-right: auto; */
-  margin: auto;
+  position: relative;
+  display: block;
+  margin-left: 150px;
+  margin-right: auto;
+  /* margin: auto; */
   /* margin-left: 250px; */
 }
 
@@ -606,13 +607,13 @@ img.animated-gif{
 }
 
 #reflection-card-img {
-  max-width: 800px;
+  max-width: 765px;
 }
 
 .reflection-card {
   margin-left: auto;
   margin-right: auto;
-  min-width: 800px;
+  max-width: 800px;
 }
 
 #reflection-card-text {
@@ -628,7 +629,7 @@ img.animated-gif{
   display: inline-block;
   cursor: pointer;
   float: left;
-  margin-right: 135px;
+  margin-right: 100px;
 }
 
 #media-upload-submit {
@@ -643,6 +644,7 @@ img.animated-gif{
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 260px;
   margin-top: 75px;
   text-align: center;
   background-color: azure;
@@ -657,6 +659,7 @@ img.animated-gif{
   margin-left: auto;
   margin-right: auto;
   margin-top: 75px;
+  margin-bottom: 200px;
   text-align: center;
   background-color: azure;
   height: 420px; 
@@ -670,7 +673,7 @@ img.animated-gif{
   margin-bottom: 10px;
 }
 
-#update-account-input {
+.update-account-input {
   border-radius: 5px;
   outline: none;
   margin: 8px;
