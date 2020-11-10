@@ -105,7 +105,7 @@ class UpdatePlaceForm extends React.Component{
         }
 
         return(
-            <div>
+            <div className="update-form">
                 <h2>Edit {this.props.place.name}!</h2>
                 <Form>
                     <Form.Field id="name" autoComplete="off"
@@ -113,7 +113,7 @@ class UpdatePlaceForm extends React.Component{
                             label="Name"
                             value={name}
                             onChange={e => {this.handleName(e.target.value)}}
-                            width={8}
+                            // width={8}
                         />
                     <Form.Field>
                         {/* ISSUE WITH HAVING THE PRE-SELECTED CATEGORY APPEAR -> THE VALUE IS SAME BUT NOT SHOWING ON FORM */}
@@ -127,28 +127,28 @@ class UpdatePlaceForm extends React.Component{
                             label="Address"
                             value={address}
                             onChange={e => {this.handleAddress(e.target.value)}}
-                            width={8}
+                            // width={8}
                         />
                     <Form.Field id="latitude" autoComplete="off"
                             control={Input}
                             label="Latitude"
                             value={latitude}
                             onChange={e => {this.handleLatitude(e.target.value)}}
-                            width={8}
+                            // width={8}
                         />
                     <Form.Field id="longitude" autoComplete="off"
                             control={Input}
                             label="Longitude"
                             value={longitude}
                             onChange={e => {this.handleLongitude(e.target.value)}}
-                            width={8}
+                            // width={8}
                         />
                     <Form.Field id="area" autoComplete="off"
                             control={Input}
                             label="Area"
                             value={area}
                             onChange={e => {this.handleArea(e.target.value)}}
-                            width={8}
+                            // width={8}
                         />
                     <Form.Field>
                         <label htmlFor="country">Country</label>

@@ -119,10 +119,10 @@ class TripPage extends React.Component{
                     <h3>{start_nice_timestamp} - {end_nice_timestamp}</h3>
                     <p>{description}</p>
                     <div>
+                            <Button color="yellow" onClick={this.handleUpdate}>Edit Trip</Button>
                             <button className="ui red button" onClick={this.handleTripDelete}>
                                 Delete
                             </button>
-                            <Button onClick={this.handleUpdate}>Edit Trip</Button>
                     </div>
                 </div>
                 {
@@ -133,12 +133,14 @@ class TripPage extends React.Component{
                     null
                 }
                 {/* <Button onClick={this.handleAddPlace}>Add a Place</Button> */}
-                <h2 className="card-group-title">Where I went</h2>
-                <PlacesMap places={this.findPlaces()}/>
-                <PlacesSearch searchTerm={this.state.searchTerm} changeSearchTerm={this.changeSearchTerm}/>
-                <PlacesCategoryFilter selectedCategory={this.state.selectedCategory} changeSelectedCategory={this.changeSelectedCategory}/>
-                <PlacesRevisitFilter selectedRevisit={this.state.selectedRevisit} changeSelectedRevisit={this.changeSelectedRevisit}/>
-                <AddPlaceModal />
+                <h2 className="card-group-title">All the places I stopped at</h2>
+                {/* <PlacesMap places={this.findPlaces()}/> */}
+                <div id="search-filter">
+                    <PlacesSearch searchTerm={this.state.searchTerm} changeSearchTerm={this.changeSearchTerm}/>
+                    <PlacesRevisitFilter selectedRevisit={this.state.selectedRevisit} changeSelectedRevisit={this.changeSelectedRevisit}/>
+                    <PlacesCategoryFilter selectedCategory={this.state.selectedCategory} changeSelectedCategory={this.changeSelectedCategory}/>
+                    <AddPlaceModal />
+                </div>
                 <PlacesContainer places={this.findPlaces()}/>
                 {/* <CardGroup className="places-card-group">
                     {arrayOfComponents}

@@ -2,12 +2,21 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 class UpdateReflectionForm extends React.Component{
-
-    state = {
-        date_visited: this.props.reflection.date_visited,
-        rating: this.props.reflection.rating,
-        content: this.props.reflection.content
+    constructor(props){
+        super(props)
+        let date_array = props.reflection.nice_timestamp.split("/")
+        this.state = {
+            date_visited: `${date_array[2]}-${date_array[0]}-${date_array[1]}`,
+            rating: this.props.reflection.rating,
+            content: this.props.reflection.content
+        }
     }
+
+    // state = {
+    //     date_visited: this.props.reflection.date_visited,
+    //     rating: this.props.reflection.rating,
+    //     content: this.props.reflection.content
+    // }
 
     handleChange = (evt) => {
         this.setState({
@@ -43,18 +52,18 @@ class UpdateReflectionForm extends React.Component{
         let {date_visited, rating, content} = this.state
 
         return(
-            <div>
+            <div id="edit-reflection">
                 <h2>Edit {this.props.reflection.nice_timestamp}!</h2>
                 <form onSubmit={this.handleUpdateReflection}>
                     <label htmlFor="date_visited">Date Visited</label>
-                    <input type="date"
+                    <input id="reflection-date" type="date"
                         name="date_visited"
                         value={date_visited}
                         onChange={this.handleChange}
                     />
                     <br></br>
-                    <label htmlFor="rating">Rating</label>
-                    <input type="number" min="0" max="10"
+                    <label htmlFor="rating">Rating (must be between 0 - 10)</label>
+                    <input id="reflection-rating" type="number" min="0" max="10"
                         name="rating"
                         value={rating}
                         onChange={this.handleChange}
@@ -67,7 +76,7 @@ class UpdateReflectionForm extends React.Component{
                         onChange={this.handleChange}
                     />
                     <br></br>
-                    <input type="submit" value="Update Reflection"/>
+                    <input id="reflection-submit" type="submit" value="Update Reflection"/>
                 </form>
             </div>
         )

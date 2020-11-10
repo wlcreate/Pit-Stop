@@ -9,7 +9,7 @@ class PlacesSearch extends React.Component{
 
     render(){
         return(
-            <form>
+            <form className="search-bar" >
             <p><strong>Search</strong></p>
             <input type="text" 
                 placeholder="Search by name"

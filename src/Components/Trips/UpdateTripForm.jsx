@@ -53,7 +53,7 @@ class UpdateTripForm extends React.Component{
         console.log(this.props.trip)
         console.log(start_date)
         return(
-            <div>
+            <div className="update-form">
                 <h2>Edit {this.props.trip.title}!</h2>
                 <Form>
                     <Form.Field id="title"
@@ -62,7 +62,7 @@ class UpdateTripForm extends React.Component{
                         name="title"
                         value={title}
                         onChange={this.handleChange}
-                        width={8}
+                        // width={8}
                     />
                     <Form.Field id="start_date"
                         control={Input}
@@ -71,7 +71,7 @@ class UpdateTripForm extends React.Component{
                         name="start_date"
                         value={start_date}
                         onChange={this.handleChange}
-                        width={8}
+                        // width={8}
                     />
                     <Form.Field id="end_date"
                         control={Input}
@@ -80,7 +80,7 @@ class UpdateTripForm extends React.Component{
                         name="end_date"
                         value={end_date}
                         onChange={this.handleChange}
-                        width={8}
+                        // width={8}
                     />
                     <Form.Field id="description"
                         control={Input}
@@ -88,7 +88,7 @@ class UpdateTripForm extends React.Component{
                         name="description"
                         value={description}
                         onChange={this.handleChange}
-                        width={8}
+                        // width={8}
                     />
                     <Form.Field
                         id='submit'

@@ -17,7 +17,7 @@ const PlacesCategoryFilter = (props) => {
     }
 
     return(
-        <div>
+        <div id="filter-category">
             <p><strong>Filter by category</strong></p>
             <select value={props.selectedCategory} onChange={handleChange}>
                 <option value={"All"}>All</option>

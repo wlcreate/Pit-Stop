@@ -90,7 +90,7 @@ function AddPlaceModal(props) {
         <Modal
         closeIcon
         open={open}
-        trigger={<Button color='teal'>Add a Place</Button>}
+        trigger={<Button color='teal' id="add-btn">Add a Place</Button>}
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         >

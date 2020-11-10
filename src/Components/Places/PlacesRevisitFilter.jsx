@@ -7,7 +7,7 @@ const PlacesRevisitFilter = (props) => {
     }
 
     return(
-        <div>
+        <div id="filter-revisit">
             <p><strong>Filter by revisit</strong></p>
             <select value={props.selectedRevisit} onChange={handleChange}>
                 <option value={"All"}>All</option>

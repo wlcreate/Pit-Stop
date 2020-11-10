@@ -63,65 +63,67 @@ class SignUpForm extends React.Component{
         })
         // debugger
         return(
-            <div className="signup">
-                <h1 id="signup-h1">Nice to meet you!</h1>
-                <img className="animated-gif" src="https://media.giphy.com/media/toelXGUsYD6vtCN408/giphy.gif" alt="signup gif"/>
-                
-                <p id="signup-p">Sign up to keep track and reflect on where you've gone.</p>
-                <div>
-                    <ul className="error">
-                        {showErrors}
-                    </ul>
+            <div id="signup-background">
+                <div className="signup">
+                    <h1 id="signup-h1">Nice to meet you!</h1>
+                    <img className="animated-gif" src="https://media.giphy.com/media/toelXGUsYD6vtCN408/giphy.gif" alt="signup gif"/>
+                    
+                    <p id="signup-p">Sign up to keep track and reflect on where you've gone.</p>
+                    <div>
+                        <ul className="error">
+                            {showErrors}
+                        </ul>
+                    </div>
+                    <Form id="signup-form">
+                        <Form.Field inline>
+                            <label id="first_name">First name</label>
+                            <Input 
+                            placeholder="First name"
+                            name="first_name"
+                            value={first_name}
+                            onChange={this.handleChange}
+                            width={8}
+                            />
+                        </Form.Field>
+                        <Form.Field inline>
+                            <label id="last_name">Last name</label>
+                            <Input
+                            placeholder="Last name"
+                            name="last_name"
+                            value={last_name}
+                            onChange={this.handleChange}
+                            width={8}
+                            />
+                        </Form.Field>
+                        <Form.Field inline>
+                            <label id="username">Username</label>
+                            <Input
+                            placeholder="Username"
+                            name="username"
+                            value={username}
+                            onChange={this.handleChange}
+                            width={8}
+                            />
+                        </Form.Field>
+                        <Form.Field inline>
+                            <label id="password">Password</label>
+                            <Input type="password"
+                            placeholder="Password"
+                            name="password"
+                            value={password}
+                            onChange={this.handleChange}
+                            width={8}
+                            />
+                        </Form.Field>
+                        <Form.Field
+                            id='submit'
+                            control={Button}
+                            content='Sign Up'
+                            onClick={this.handleClick}
+                        />
+                    </Form>
+                    <p className="login-bottom">Have an Account?</p><Link className="login-bottom" to="/login">Login</Link>
                 </div>
-                <Form id="signup-form">
-                    <Form.Field inline>
-                        <label id="first_name">First name</label>
-                        <Input 
-                        placeholder="First name"
-                        name="first_name"
-                        value={first_name}
-                        onChange={this.handleChange}
-                        width={8}
-                        />
-                    </Form.Field>
-                    <Form.Field inline>
-                        <label id="last_name">Last name</label>
-                        <Input
-                        placeholder="Last name"
-                        name="last_name"
-                        value={last_name}
-                        onChange={this.handleChange}
-                        width={8}
-                        />
-                    </Form.Field>
-                    <Form.Field inline>
-                        <label id="username">Username</label>
-                        <Input
-                        placeholder="Username"
-                        name="username"
-                        value={username}
-                        onChange={this.handleChange}
-                        width={8}
-                        />
-                    </Form.Field>
-                    <Form.Field inline>
-                        <label id="password">Password</label>
-                        <Input type="password"
-                        placeholder="Password"
-                        name="password"
-                        value={password}
-                        onChange={this.handleChange}
-                        width={8}
-                        />
-                    </Form.Field>
-                    <Form.Field
-                        id='submit'
-                        control={Button}
-                        content='Sign Up'
-                        onClick={this.handleClick}
-                    />
-                </Form>
-                <p className="login-bottom">Have an Account?</p><Link className="login-bottom" to="/login">Login</Link>
             </div>
         )
     }

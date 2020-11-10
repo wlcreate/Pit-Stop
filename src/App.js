@@ -14,6 +14,7 @@ import ReflectionsContainer from './Components/Reflections/ReflectionsContainer'
 import Footer from './Components/Footer'
 import AccountPage from './Components/Account/AccountPage'
 import UpdateAccountForm from './Components/Account/UpdateAccountForm'
+import NotFoundPage from './Components/NotFoundPage'
 
 class App extends React.Component{
 
@@ -71,7 +72,8 @@ class App extends React.Component{
           {/* <Route path="/trips/:id/places/:id/reflections" exact component={ReflectionsContainer}/> */}
           <Route path="/account" exact component={AccountPage}/>
           <Route path="/account/edit" exact component={UpdateAccountForm}/>
-          <Route render={ () => <p>Page not Found</p> } />
+          <Route component={NotFoundPage} />
+          {/* <Route render={ () => <p>Page not Found</p> } /> */}
         </Switch>
         <Footer />
       </div>

@@ -54,16 +54,16 @@ class ReflectionsContainer extends React.Component{
                     {
                         revisit
                         ?
-                        "Yes"
+                        " Yes"
                         :
-                        "No"
+                        " No"
                     }
                     </p>
                     <div>
+                        <Button color="yellow" onClick={this.handleEditPlace}>Edit Place</Button>
                         <button className="ui red button" onClick={this.handlePlaceDelete}>
                             Delete
                         </button>
-                        <Button onClick={this.handleEditPlace}>Edit Place</Button>
                     </div> 
                 </div>
                 {
@@ -73,7 +73,7 @@ class ReflectionsContainer extends React.Component{
                     :
                     null
                 }
-                <h2 className="card-group-title">My Reflections</h2>
+                <h2 id="reflection-cards-title">My Reflections</h2>
                 <CardGroup className="reflections-card-group">
                     {arrayOfComponents}
                 </CardGroup>

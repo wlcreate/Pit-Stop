@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {withRouter, NavLink} from 'react-router-dom'
+import logo from './pitstopLogo.png'
 
 class NavBar extends React.Component {
 
@@ -18,7 +19,8 @@ class NavBar extends React.Component {
                     ?
                     <ul className="nav">
                         <li>
-                            <p>RE-TRAVEL</p>
+                            {/* <p>RE-TRAVEL</p> */}
+                            <img src={logo} alt="pitstop Logo"/>
                         </li>
                         <li>
                             <NavLink to="/">Home</NavLink>
@@ -38,7 +40,8 @@ class NavBar extends React.Component {
                     :
                     <ul className="nav">
                         <li>
-                            <p>RE-TRAVEL</p>
+                            {/* <p>RE-TRAVEL</p> */}
+                            <img src={logo} alt="pitstop Logo"/>
                         </li>
                         <li>
                             <NavLink to="/">Home</NavLink>

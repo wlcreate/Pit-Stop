@@ -33,20 +33,20 @@ class PlaceCard extends React.Component{
             <Card>
                 <Card.Content onClick={this.handleClick}>
                     <Card.Header>{name}</Card.Header>
-                    <Card.Meta>{category.name}</Card.Meta>
+                    {/* <Card.Meta>{category.name}</Card.Meta> */}
                     <Card.Description>
                         {area}, {country}
                     </Card.Description>
                 </Card.Content>
                 <Card.Content>
-                    <div className="ui blue labels">
-                        <a className="ui label">
+                    <div>
+                        <a className="ui blue label">
                             {category.name}
                         </a>
                         {
                             revisit
                             ?
-                            <a className="ui label">
+                            <a className="ui purple label">
                                 Revisit
                             </a>
                             :

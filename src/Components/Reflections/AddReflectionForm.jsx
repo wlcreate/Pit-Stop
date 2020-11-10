@@ -49,18 +49,18 @@ class AddReflectionForm extends React.Component{
         let {date_visited, rating, content} = this.state
 
         return(
-            <div>
+            <div className="add-reflection">
                 <h2>Add a Reflection</h2>
                 <form onSubmit={this.handleAddReflection}>
                     <label htmlFor="date_visited">Date Visited</label>
-                    <input type="date"
+                    <input id="reflection-date" type="date"
                         name="date_visited"
                         value={date_visited}
                         onChange={this.handleChange}
                     />
                     <br></br>
                     <label htmlFor="rating">Rating (must be between 0 - 10)</label>
-                    <input type="number" min="0" max="10"
+                    <input id="reflection-rating" type="number" min="0" max="10"
                         name="rating"
                         value={rating}
                         onChange={this.handleChange}
@@ -73,7 +73,7 @@ class AddReflectionForm extends React.Component{
                         onChange={this.handleChange}
                     />
                     <br></br>
-                    <input type="submit" value="Add Reflection"/>
+                    <input id="reflection-submit" type="submit" value="Add Reflection"/>
                 </form>
             </div>
         )

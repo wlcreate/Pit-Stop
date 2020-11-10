@@ -64,7 +64,7 @@ class ReflectionCard extends React.Component{
     render(){
         let {nice_timestamp, rating, content, media} = this.props.reflection
         return(
-            <div class="ui fluid card">
+            <div className="reflection-card">
                 <Card fluid>
                     <Card.Content>
                         <Card.Header>{nice_timestamp}</Card.Header>
@@ -73,12 +73,11 @@ class ReflectionCard extends React.Component{
                             {
                                 media
                                 ?
-                                <img src={media} alt="reflection"/>
+                                <img id="reflection-card-img" src={media} alt="reflection"/>
                                 :
                                 null
                             }
-                            <br/>
-                            {content}
+                            <p id="reflection-card-text">{content}</p>
                         </Card.Description>
                     </Card.Content>
                     <Card.Content>
@@ -86,17 +85,16 @@ class ReflectionCard extends React.Component{
                             <Button floated='right' className="ui right floated red button" onClick={this.handleDelete}>
                                 Delete
                             </Button>
-                            <Button floated='right' className="ui right floated button" onClick={this.handleEditReflection}> 
+                            <Button floated='right' className="ui right floated yellow button" onClick={this.handleEditReflection}> 
                                 Edit Reflection
                             </Button>
-                            <form onSubmit={this.handleMediaUpload}>
+                            <form id="media-upload-form" onSubmit={this.handleMediaUpload}>
                                 {/* <label htmlFor="media">Add Picture or Video</label> */}
-                                <input type="file"
+                                <input id="media-upload-input" type="file"
                                     name="media"
                                     onChange={this.handleChange}
                                 />
-                                <br/>
-                                <input type="submit" value="Add Picture"/>
+                                <input id="media-upload-submit" type="submit" value="Add Picture"/>
                             </form>
                         </div>
                     </Card.Content>
