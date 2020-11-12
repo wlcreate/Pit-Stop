@@ -33,7 +33,7 @@ class AccountPage extends React.Component{
                         particle.p.x,
                         particle.p.y,
                         particle.radius * 2,
-                        particle.radius *2
+                        particle.radius * 2
                     )
                     ctx.fillStyle = particle.color
                     ctx.fill()

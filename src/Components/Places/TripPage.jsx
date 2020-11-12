@@ -134,7 +134,7 @@ class TripPage extends React.Component{
                 }
                 {/* <Button onClick={this.handleAddPlace}>Add a Place</Button> */}
                 <h2 className="card-group-title">All the places I stopped at</h2>
-                {/* <PlacesMap places={this.findPlaces()}/> */}
+                <PlacesMap places={this.findPlaces()}/>
                 <div id="search-filter">
                     <PlacesSearch searchTerm={this.state.searchTerm} changeSearchTerm={this.changeSearchTerm}/>
                     <PlacesRevisitFilter selectedRevisit={this.state.selectedRevisit} changeSelectedRevisit={this.changeSelectedRevisit}/>
