@@ -21,6 +21,7 @@ import Img14 from './TravelQuotes/14.png'
 import Img15 from './TravelQuotes/15.png'
 import Img16 from './TravelQuotes/16.png'
 import Img17 from './TravelQuotes/17.png'
+import Img18 from './TravelQuotes/18.png'
 
 class TripsContainer extends React.Component{
 
@@ -47,13 +48,14 @@ class TripsContainer extends React.Component{
             "It's a funny thing coming home. Nothing changes. Everything looks the same, feels the same, even smells the same. You realize what's changed is you. - F. Scott Fitzgerald",
             "I'm not sure what I'll do, but - well, I want to go places and see people. I want my mind to grow. I want to live where things happen on a big scale. - F. Scott Fitzgerald",
             "It is good to have an end to journey toward; but it is the journey that matters in the end. - Ernest Hemingway",
-            "Our happiest moments as tourists always seem to come when we stumble upon one thing while in pursuit of something else. - Lawrence Block"
+            "Our happiest moments as tourists always seem to come when we stumble upon one thing while in pursuit of something else. - Lawrence Block",
+            "We leave something of ourselves behind when we leave a place, we stay there, even though we go away. And there are things in us that we can find again only by going back there. - Pascal Mercier"
         ]
         
         let randomQuote = travelQuotes[Math.floor(Math.random() * travelQuotes.length)]
 
         let imagesArray = [
-            Img1, Img2, Img3, Img4, Img5, Img6, Img7, Img8, Img9, Img10, Img11, Img12, Img13, Img14, Img15, Img16, Img17
+            Img1, Img2, Img3, Img4, Img5, Img6, Img7, Img8, Img9, Img10, Img11, Img12, Img13, Img14, Img15, Img16, Img17, Img18
         ]
 
         let randomImage = imagesArray[Math.floor(Math.random() * imagesArray.length)]

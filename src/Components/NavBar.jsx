@@ -10,6 +10,7 @@ class NavBar extends React.Component {
         localStorage.clear()
         // console.log(handleLogOut())
         this.props.handleLogOut()
+        alert("Thanks for visiting! See you next time!")
     }
     render(){
         return (

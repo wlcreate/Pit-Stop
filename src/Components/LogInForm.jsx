@@ -45,6 +45,7 @@ class LogInForm extends React.Component{
                     username: "",
                     password: ""
                 })
+                alert("Nice to see you again!")
                 this.props.history.push("/trips")
             }
         })

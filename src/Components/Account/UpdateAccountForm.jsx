@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
+import ParticlesBg from "particles-bg";
 
 class UpdateAccountForm extends React.Component{
 
@@ -88,6 +89,7 @@ class UpdateAccountForm extends React.Component{
                     <br></br>
                     <input id="update-account-submit" type="submit" value="Submit"/>
                 </form>
+                <ParticlesBg type="random" bg={true}/>
             </div>
         )
     }
