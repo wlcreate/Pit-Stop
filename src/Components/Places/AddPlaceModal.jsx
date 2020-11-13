@@ -28,6 +28,7 @@ function AddPlaceModal(props) {
         }
     }
 
+    // using Geolocation API to get user's location and input it on the form
     let inputUserLocation = () => {
 
         function success (position) {
@@ -36,7 +37,7 @@ function AddPlaceModal(props) {
         }
 
         function error () {
-            alert('Sorry, no position')
+            alert('Sorry, no position found')
         }
 
         if(navigator.geolocation) {
