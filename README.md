@@ -7,7 +7,7 @@ Pit Stop is a travel journal web application that changes the way users remember
 1. Clone down the [Rails backend](https://github.com/wlcreate/Mod5Project_backend) --git clone
 2. Clone down this repo into local machine --git clone
 3. cd into the directory
-4. Install all dependencies
+4. Install all dependencies 
 ```
 npm install
 ```
@@ -86,7 +86,14 @@ npm start
  * [React Router](https://reacttraining.com/react-router/web/guides/quick-start)
  
  ## Build Status
- * This project was completed for the purpose of the project presentation deadline.
+ * This project was completed in 11 days for the purpose of the project presentation.
+ 
+## Future Features
+ * Improve design elements
+ * Implement IBM Watson Tone Analyzer to see what mood a reflection is
+ * Have more of an international scope, especially for latitude and longitude, with Geocoding
+ * Incorporate trip planner aspects
+ * Notification when flights to places visited are cheap
  
  ## Acknowledgements
 I would like to thank:
@@ -103,3 +110,4 @@ I would like to thank:
   * Leigh Halliday's [Mapbox - Interactive maps in React](https://www.youtube.com/watch?v=JJatzkPcmoI&t)
   * Sylwia Vargas' [Hiding your API keys](https://medium.com/better-programming/how-to-hide-your-api-keys-c2b952bc07e6 )
   * Reinald Reynoso's [How to Upload Files in a React and Rails App](https://medium.com/better-programming/how-to-upload-files-in-a-react-and-rails-app-69c31a9cf9b7)
+  * Bruna's [Image Storage in Rails Apps Using Cloudinary and Active Storage](https://hackernoon.com/image-storage-in-rails-apps-using-cloudinary-and-active-storage-9w2u3yli)
