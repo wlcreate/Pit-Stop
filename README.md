@@ -77,15 +77,17 @@ npm start
  ## Tools
  * [Rack CORS](https://github.com/cyu/rack-cors)
  * [ActiveModel::Serializer](https://github.com/rails-api/active_model_serializers)
+ * [Figaro](https://github.com/laserlemon/figaro)
  * [BCrypt](https://github.com/codahale/bcrypt-ruby)
  * [Mapbox API](https://docs.mapbox.com/mapbox-gl-js/api/)
  * [React-Map-Gl](https://visgl.github.io/react-map-gl/)
+ * [Cloudinary API](https://cloudinary.com/documentation)
  * [react-country-region-selector](https://github.com/country-regions/react-country-region-selector)
  * [particles-bg](https://github.com/lindelof/particles-bg)
  * [Semantic UI](https://react.semantic-ui.com)
  * [React Router](https://reacttraining.com/react-router/web/guides/quick-start)
  
- ## Build Status
+## Build Status
  * This project was completed in 11 days for the purpose of the project presentation.
  
 ## Future Features
@@ -95,7 +97,7 @@ npm start
  * Incorporate trip planner aspects
  * Notification when flights to places visited are cheap
  
- ## Acknowledgements
+## Acknowledgements
 I would like to thank:
   * Sylwia Vargas
   * Eric Kim
