@@ -64,7 +64,7 @@ npm start
  * There are 5 models that have the following associations ```has_many``` and ```belongs_to ```
  
  ## Domain Model
- * Coming soon!
+ <img src='./image/domainImg.jpg'/>
  
  ## Tech Stack
  * React.js
