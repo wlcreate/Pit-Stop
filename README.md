@@ -61,7 +61,7 @@ npm start
  * delete a reflection
  
  ### Active Record Associations
- * There are 5 models that have the following associations ```has_many and belongs_to ```
+ * There are 5 models that have the following associations ```has_many``` and ```belongs_to ```
  
  ## Domain Model
  * Coming soon!
