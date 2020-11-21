@@ -8,7 +8,7 @@ const Home = () => {
             <video id="home-video" width="100%" controls autostart loop autoPlay src={HomePageVideo} type="video/mp4" />
             <h2 id="home-header">The travel journal application changing the way you reflect</h2>
             <p id="definition">Memory Space (Les Lieux de Mémoire): a concept related to collective memory, stating that certain places, objects, or events can have special significance related to group's remembrance.</p>
-            <p id="home-text">Pit Stop is more than a journal, it's the best journal to record your trips by helping you remember the places you stopped at long after you left. Inspired by the concept of "Memory Space" and the idea that when we travel, the places we visit leave marks on us as we do on them. While the time spent at these places are short, our memories of them last a lifetime.</p>
+            <p id="home-text">Pit Stop is more than a journal, it's the best journal to record your trips by helping you remember the places you stopped at long after you left. Inspired by the concept of <i>Memory Space</i> and the idea that when we travel, the places we visit leave marks on us as we do on them. While the time spent at these places are short, our memories of them last a lifetime.</p>
             <h2 id="home-header">A trip down memory lane just for you</h2>
             <p id="home-text">Pit Stop provides a place just for you to collect and reflect on the places you visited based on all of your trips.</p>
             <img id="home-img" src="https://images.pexels.com/photos/1051075/pexels-photo-1051075.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="female with map on traveling"/>
