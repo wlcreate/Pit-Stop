@@ -1,7 +1,9 @@
 # Pit Stop
-Pit Stop is a travel journal web application that changes the way users remember their trips. Instead of creating daily journal entries, users add places they visited on a trip and create reflections on those places. This was inspired by the idea of [memory space (Les Lieux de Mémoire)](https://en.wikipedia.org/wiki/Memory_space_(social_science)) in that our memories are often tied to the places we have been.
+Pit Stop is a travel journal web application that changes the way users remember their trips. Instead of creating daily journal entries, users add places they visited on a trip and create reflections on those places. This was inspired by the idea of [memory space](https://en.wikipedia.org/wiki/Memory_space_(social_science)) (Les Lieux de Mémoire) in that our memories are often tied to the places we have been.
 
 [Link to backend](https://github.com/wlcreate/Mod5Project_backend)
+
+[Link to demo](https://youtu.be/Sx4OchCFgm0)
 
 ## Getting Started
 1. Clone down the [Rails backend](https://github.com/wlcreate/Mod5Project_backend) --git clone
