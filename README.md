@@ -3,7 +3,7 @@ Pit Stop is a travel journal web application that changes the way users remember
 
 [Link to backend](https://github.com/wlcreate/Mod5Project_backend)
 
-[Link to demo](https://youtu.be/Sx4OchCFgm0)
+[Link to video demo](https://youtu.be/Sx4OchCFgm0)
 
 ## Getting Started
 1. Clone down the [Rails backend](https://github.com/wlcreate/Mod5Project_backend) --git clone
