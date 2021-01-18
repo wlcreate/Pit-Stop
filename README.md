@@ -13,6 +13,10 @@ Pit Stop is a travel journal web application that changes the way users remember
 ```
 npm install
 ```
+5. In the directory create a ```.env``` file and add your [Mapbox](https://docs.mapbox.com) API key 
+```
+REACT_APP_MAPBOX_API_KEY=apikey
+```
 5. Start the Rails server
 6. Open up a new terminal and run this app
 ```
