@@ -17,8 +17,8 @@ npm install
 ```
 REACT_APP_MAPBOX_API_KEY=apikey
 ```
-5. Start the Rails server
-6. Open up a new terminal and run this app
+6. Start the Rails server
+7. Open up a new terminal and run this app
 ```
 npm start
 ```
