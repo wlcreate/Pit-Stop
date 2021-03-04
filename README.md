@@ -5,6 +5,10 @@ Pit Stop is a travel journal web application that changes the way users remember
 
 [Link to video demo](https://youtu.be/Sx4OchCFgm0)
 
+<p align="center">
+ <img src="https://gyazo.com/39db1f3149f74b011ae201f01e6c175b.gif" alt="gif of Pit Stop" width=60% />
+</p>
+
 ## Getting Started
 1. Clone down the [Rails backend](https://github.com/wlcreate/Mod5Project_backend) --git clone
 2. Clone down this repo into local machine --git clone
